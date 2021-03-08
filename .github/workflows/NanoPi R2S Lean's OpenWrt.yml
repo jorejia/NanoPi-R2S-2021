@@ -3,10 +3,6 @@ name: NanoPi R2S Lean's OpenWrt
 on:
   repository_dispatch:
   workflow_dispatch:
-  schedule:
-    - cron: 0 17 * * *
-  # watch:
-  #   types: started
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
@@ -15,15 +11,15 @@ env:
   DIY_SH: scripts/lean.sh
   IPV6MOD_IN_FIRMWARE: true
   KMODS_IN_FIRMWARE: true
-  UPLOAD_WETRANSFER: true
-  UPLOAD_COWTRANSFER: true
+  UPLOAD_WETRANSFER: false
+  UPLOAD_COWTRANSFER: false
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
 
 jobs:
   Build:
-    runs-on: ubuntu-18.04
-    if: github.repository == 'DHDAXCW/NanoPi-R2S-2021'
+    runs-on: self-hosted
+    if: github.repository == 'jorejia/NanoPi-R2S'
     outputs:
       OPENWRTROOT: ${{ steps.update.outputs.OPENWRTROOT }}
       PLATFORM: ${{ steps.compile.outputs.PLATFORM }}
@@ -46,7 +42,7 @@ jobs:
         sudo -E apt-get -qq autoremove --purge
         sudo -E apt-get -qq clean
         sudo timedatectl set-timezone "$TZ"
-    
+
     - name: Clone Source Code
       run: |
         df -hT $PWD
@@ -58,7 +54,7 @@ jobs:
         #svn co https://github.com/immortalwrt/immortalwrt/branches/master/target/linux/rockchip target/linux/rockchip
         #rm -rf ./package/boot/uboot-rockchip
         #svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/boot/uboot-rockchip package/boot/uboot-rockchip
-    
+
     - name: Update Feeds
       id: update
       run: |
@@ -70,7 +66,7 @@ jobs:
       run: |
         cd $OPENWRTROOT
         ./scripts/feeds install -a
-    
+
     - name: Load Custom Configuration
       run: |
         [ -e files ] && mv files $OPENWRTROOT/files
@@ -80,7 +76,7 @@ jobs:
         ../$DIY_SH
         ../scripts/preset-clash-core.sh armv8
         ../scripts/preset-terminal-tools.sh
-    
+
     - name: Download Package
       id: package
       run: |
@@ -95,17 +91,17 @@ jobs:
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
-  
+
     - name: Compile Packages
       id: compile
-      run: |
         cd $OPENWRTROOT
         echo -e "$(nproc) thread compile"
-        make tools/compile -j$(nproc) || make tools/compile -j1 V=s
-        make toolchain/compile -j$(nproc) || make toolchain/compile -j1 V=s
-        make target/compile -j$(nproc) || make target/compile -j1 V=s IGNORE_ERRORS=1
+        let Make_Process=$(nproc)-2
+        make tools/compile -j${Make_Process} V=s
+        make toolchain/compile -j${Make_Process} V=s
+        make target/compile -j${Make_Process} V=s IGNORE_ERRORS=2
         make diffconfig
-        make package/compile -j$(nproc) IGNORE_ERRORS=1 || make package/compile -j1 V=s IGNORE_ERRORS=1
+        make package/compile -j${Make_Process} V=s IGNORE_ERRORS=2
         make package/index
         cd $OPENWRTROOT/bin/packages/*
         PLATFORM=$(basename `pwd`)
@@ -122,7 +118,7 @@ jobs:
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "::set-output name=FIRMWARE::$(echo $PWD)"
         echo "::set-output name=COMPILE_STATUS::success"
-    
+
     - name: Generate Firmware
       if: steps.compile.outputs.COMPILE_STATUS == 'success'
       id: generate
@@ -155,8 +151,8 @@ jobs:
             mkdir -p files/bin
             cp ../scripts/ipv6-helper.sh files/bin/ipv6-helper
         fi
-        make package/install -j$(nproc) || make package/install -j1 V=s
-        make target/install -j$(nproc) || make target/install -j1 V=s
+        make package/install -j$(nproc) V=s
+        make target/install -j$(nproc) V=s
         make checksum
         #mkdir -p files/ddnsto
         #touch files/ddnsto/ddnsto.sh
@@ -170,15 +166,15 @@ jobs:
       with:
         name: bin-archive
         path: openwrt/bin
-        
+
   Upload:
     needs: [Build]
-    runs-on: ubuntu-18.04
-    if: github.repository == 'DHDAXCW/NanoPi-R2S-2021'
+    runs-on: self-hosted
+    if: github.repository == 'jorejia/NanoPi-R2S'
     steps:
       - name: Checkout
         uses: actions/checkout@main
-        
+
       - name: Restore Variables
         run: |
           echo "OPENWRTROOT=$(echo '${{needs.Build.outputs.OPENWRTROOT}}')" >> $GITHUB_ENV
@@ -187,14 +183,14 @@ jobs:
           echo "SUBTARGET=$(echo '${{needs.Build.outputs.SUBTARGET}}')" >> $GITHUB_ENV
           echo "FIRMWARE=$(echo '${{needs.Build.outputs.FIRMWARE}}')" >> $GITHUB_ENV
           echo "GENERATE_STATUS=$(echo '${{needs.Build.outputs.GENERATE_STATUS}}')" >> $GITHUB_ENV
-        
+
       - name: Download Bin Folder
         uses: actions/download-artifact@v2
         if: env.GENERATE_STATUS == 'success'
         with:
           name: bin-archive
           path: openwrt/bin
-          
+
       - name: Deploy Packages-Server
         if: env.GENERATE_STATUS == 'success'
         run: |
@@ -204,6 +200,7 @@ jobs:
           mv server packages-server
           zip -qrm packages-server.zip packages-server
           mv packages-server.zip $OPENWRTROOT/bin/targets/$TARGET/$SUBTARGET
+
       - name: Organize Files
         id: organize
         if: env.GENERATE_STATUS == 'success'
@@ -214,7 +211,7 @@ jobs:
           curl -fsSL git.io/file-transfer | sh
           df -hT $PWD
           echo "::set-output name=ORGANIZE_STATUS::success"
-      
+
       - name: Upload Firmware To WeTransfer
         id: wetransfer
         if: steps.organize.outputs.ORGANIZE_STATUS == 'success' && env.UPLOAD_WETRANSFER == 'true'
@@ -223,7 +220,7 @@ jobs:
           ./transfer wet -s -p 16 --no-progress ${FIRMWARE} 2>&1 | tee wetransfer.log
           echo "::warning file=Firmware-Wetransfer.com::$(cat wetransfer.log | grep https)"
           echo "::set-output name=url::$(cat wetransfer.log | grep https | cut -f3 -d" ")"
-      
+
       - name: Generate release tag
         id: tag
         if: env.UPLOAD_RELEASE == 'true' && !cancelled()
@@ -233,18 +230,18 @@ jobs:
           touch release.txt
           [ $UPLOAD_WETRANSFER = true ] && echo "🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
           echo "::set-output name=status::success"
-      
+
       - name: Upload firmware to release
         uses: softprops/action-gh-release@v1
         if: steps.tag.outputs.status == 'success' && !cancelled()
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
         with:
           name: ${{ steps.tag.outputs.release_date }} Lean OpenWrt
           tag_name: ${{ steps.tag.outputs.release_tag }}
           body_path: release.txt
           files: ${{ env.FIRMWARE }}/*
-      
+
       - name: Delete workflow runs
         uses: GitRML/delete-workflow-runs@main
         with:
@@ -258,7 +255,8 @@ jobs:
           keep_latest: 7
           delete_tags: true
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
+
 
       - name: Delete Artifacts
         uses: geekyeggo/delete-artifact@v1
