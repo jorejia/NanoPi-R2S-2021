@@ -18,7 +18,6 @@ env:
 
 jobs:
   Upload:
-    needs: [Build]
     runs-on: ubuntu-18.04
     if: github.repository == 'jorejia/NanoPi-R2S-2021'
     steps:
