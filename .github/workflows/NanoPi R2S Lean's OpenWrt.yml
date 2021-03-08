@@ -100,9 +100,9 @@ jobs:
         let Make_Process=$(nproc)-2
         make tools/compile -j${Make_Process} V=s
         make toolchain/compile -j${Make_Process} V=s
-        make target/compile -j${Make_Process} V=s IGNORE_ERRORS=2
+        make target/compile -j${Make_Process} V=s IGNORE_ERRORS=1
         make diffconfig
-        make package/compile -j${Make_Process} V=s IGNORE_ERRORS=2
+        make package/compile -j${Make_Process} V=s IGNORE_ERRORS=1
         make package/index
         cd $OPENWRTROOT/bin/packages/*
         PLATFORM=$(basename `pwd`)
