@@ -94,6 +94,7 @@ jobs:
 
     - name: Compile Packages
       id: compile
+      run: |
         cd $OPENWRTROOT
         echo -e "$(nproc) thread compile"
         let Make_Process=$(nproc)-2
