@@ -1,85 +1,11 @@
-# NanoPi-R2S-2021 每天自动更新插件和内核版本
+# NanoPi-R2S-2021 精简插件
 
-### DDNSTO穿透插件
-
-- 目前编译已安装上了
-- 可以直接在软路由ttyd执行，复制👇👇👇
-- ```wget https://raw.githubusercontent.com/linkease/ddnsto_all_in_one_script/master/install_ddnsto.sh&& sh install_ddnsto.sh``` 
-- 然后到ttyd终端下回车后进度结束。👇
-- 刷新一下就出现在服务里了。如果还没明白，可以[**看视频**](https://www.bilibili.com/video/BV1mo4y197jK)如何安装就行
-- 如果在过程中遇到安装失败，可以执行备用命令安装👇
-- 备用命令 ```wget https://github.com/DHDAXCW/ddnsto_all_in_one_script/releases/download/ddns/ddnsto.sh;sh ddnsto.sh```
-
-## 提示
- - 我的固件加了动态超频，不管热不热这是取决后台运行程序在跑什么。
- - 感觉很热  就加风扇，推荐 风扇6cm×6cm，薄1cm，usb也行 或者端子线zh1.5
-  
-### 默认编译
-
+### 介绍
+- Fork自[**DHDAXCW/NanoPi-R2S-2021**](https://github.com/DHDAXCW/NanoPi-R2S-2021)
+- 包含原版的基本特性
+- 根据R2S的特点去掉一些重复功能和用不上的插件
+- 主要满足上网，和文件共享两项功能
+## 默认
 - 用户名：root 密码：password 管理IP：192.168.2.1
 
-- 下载地址： https://github.com/DHDAXCW/NanoPi-R2S-2021/releases
-# 赏个鸡腿吧
- ![Alt text](data/2.jpg?raw=true "Title")
-### 如果你觉得此项目对你有帮助，可以捐助我们，以鼓励项目能持续发展，更加完善
-
-### 版本日志 2.18版
-- 解决挑卡无法开机问题（我很累。。。）
-- 修复AdGuard Home崩溃问题
-- 修复passwall和ssrp的v2ray协议
-- 更新无线网卡驱动源
-- 更换AdGuard Home源码
-- 优化补丁中的自动调节超频
-- 增加螃蟹网卡驱动，rtwl8811-88**usb CU系列
-- 新增 OpenAppFilter插件 一键治疗熊孩子
-- 修复了其他小问题
-### 版本 2.17版
-
-- 新增ddnsto内网穿透插件和易有云插件2.0， ddnsto与易有云都可以借助 aria2 完成远程下载 （特别感谢[**linkease**](https://github.com/linkease/ddnsto-openwrt)原作者提供源码。）
-
-- 更新主题
-
-### 版本日志 2.13版
-
-- passwall和SSRP中的去掉v2ray协议,Xray正在取代v2ray的位置。
-
-- 移除服务的v2ray服务器
-
-### 版本日志 2.6号 那就尴尬了，一键治疗熊孩子还是没加上去（上面最新版本已加）
-
-- 增新 OpenAppFilter插件 一键治疗熊孩子	
-
-  家长对小孩上网行为进行管控，限制小孩玩游戏等	
-
-  限制员工使用某些app， 如视频、招聘、购物、游戏、常用网站等	
-
-  记录终端的上网记录，实时了解当前app使用情况，比如xxx正在访问抖音	
-
-  在网络→应用过滤里
-
-- 更新了passwall和ssrp
-
-- 修复卡刷无法开机，再次优化	
-
-- 修复小问题
-
-### 版本日志 2.1	
-
-- 增加多国语言	
-
-- 再次优化了ipv6功能	
-
-- 修复了小问题	
-
-### 更新日志1.30号	
-
-- 增新了ipv6客户端，快速获取ipv6	
-
-- 修复了ipv6情况下节点有时断开，提高上网质量；	
-
-- 增加了helloworld插件	
-
-- 修复了adguardhome插件无法启动问题，改为Lienol源码仓库的插件	
-
-## 后续再说
-
+## 包含插件
