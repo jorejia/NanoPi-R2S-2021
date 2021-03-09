@@ -12,7 +12,7 @@
 - SSRP的DNS上游交给端口5335，在AdGardhome中设置接管DNS也可以达到同样的效果
 - 磁盘管理可以快速创建磁盘，看不见的空间回来了
 - Transmission适合Pt保种，只是下载更建议Aria2，使用前请置好下载位置
-- Samba网络共享可以让路由器上的空间和本地文件夹一样，方便在文件管理中打开，需用命令添加用户才能连接 `smbpasswd -a root` 设置一个密码，然后在编辑模板删除或者加#注释掉 `invalid users = root` 就可以用root登录了
+- 网络共享可以让路由器上的空间和本地文件夹一样，方便在文件管理中打开，需用命令添加用户才能连接 `smbpasswd -a root` 设置一个密码，然后在编辑模板删除或者加#注释掉 `invalid users = root` 就可以用root登录了
 - DDNSTO简单上手的内网穿透
 - BaiduPCS可以登录百度网盘下载东西，比限速的客户端快一丢丢
 - KMS服务器 `slmgr /skms 192.168.2.1` 你应该懂了
