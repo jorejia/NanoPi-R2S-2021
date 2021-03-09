@@ -4,7 +4,7 @@ opkg install zstd
 opkg install libzstd
 cd /mnt/mmcblk0p2
 rm -rf artifact openwrt-rockchip*.img.gz openwrt-rockchip*img*
-wget https://github.com/DHDAXCW/NanoPi-R4S-2021/releases/download/$(date +%Y.%m.%d)-Lean/openwrt-rockchip-armv8-friendlyarm_nanopi-r4s-ext4-sysupgrade.img.gz
+wget https://github.com/jorejia/NanoPi-R4S-2021/releases/download/$(date +%Y.%m.%d)-Lean/openwrt-rockchip-armv8-friendlyarm_nanopi-r4s-ext4-sysupgrade.img.gz
 
 if [ -f /mnt/mmcblk0p2/openwrt-rockchip*.img.gz	]; then
 	echo -e '\e[92m今天固件已下载，准备解压\e[0m'
@@ -42,6 +42,6 @@ if [ -f /tmp/openwrt-rockchip-armv8-friendlyarm_nanopi-r4s-ext4-sysupgrade.img.z
 	echo 1 > /proc/sys/kernel/sysrq
 	echo u > /proc/sysrq-trigger || umount /
 	pv /tmp/openwrt-rockchip-armv8-friendlyarm_nanopi-r4s-ext4-sysupgrade.img.zst | zstdcat | dd of=/dev/mmcblk0 conv=fsync
-	echo -e '\e[92m刷机完毕，正在重启...\e[0m'	
+	echo -e '\e[92m刷机完毕，正在重启...\e[0m'
 	echo b > /proc/sysrq-trigger
 fi
