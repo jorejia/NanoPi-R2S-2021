@@ -20,4 +20,4 @@ else
 fi
 cd /tmp/upload
 sha256sum -c sha256sums 2> /dev/null | grep OK
---sysupgrade -v openwrt-rockchip-armv8-friendlyarm_nanopi-r2s-squashfs-sysupgrade.img.gz
+sysupgrade -v openwrt-rockchip-armv8-friendlyarm_nanopi-r2s-squashfs-sysupgrade.img.gz
