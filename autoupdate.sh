@@ -2,29 +2,29 @@
 opkg update
 opkg install zstd
 opkg install libzstd
-cd /rom
+cd /tmp/update
 rm -rf artifact openwrt-rockchip*.img.gz openwrt-rockchip*img*
 wget https://github.com/jorejia/NanoPi-R2S-2021/releases/download/$(date +%Y.%m.%d)-Lean/openwrt-rockchip-armv8-friendlyarm_nanopi-r2s-squashfs-sysupgrade.img.gz
 
-if [ -f /rom/openwrt-rockchip-armv8-friendlyarm_nanopi-r2s-squashfs-sysupgrade.img.gz	]; then
+if [ -f /tmp/update/openwrt-rockchip-armv8-friendlyarm_nanopi-r2s-squashfs-sysupgrade.img.gz	]; then
 	echo -e '\e[92m今天固件已下载，准备解压\e[0m'
 else
 	echo -e '\e[91m今天的固件还没更新，尝试下载昨天的固件\e[0m'
 	wget https://github.com/jorejia/NanoPi-R2S-2021/releases/download/$(date -d "@$(( $(busybox date +%s) - 86400))" +%Y.%m.%d)-Lean/openwrt-rockchip-armv8-friendlyarm_nanopi-r2s-squashfs-sysupgrade.img.gz
-	if [ -f /rom/openwrt-rockchip-armv8-friendlyarm_nanopi-r2s-squashfs-sysupgrade.img.gz ]; then
+	if [ -f /tmp/update/openwrt-rockchip-armv8-friendlyarm_nanopi-r2s-squashfs-sysupgrade.img.gz ]; then
 		echo -e '\e[92m昨天的固件已下载，准备解压\e[0m'
 	else
 		echo -e '\e[91m没找到最新的固件，脚本退出\e[0m'
 		exit 1
 	fi
 fi
-cd /rom
-	pv /rom/openwrt-rockchip-armv8-friendlyarm_nanopi-r2s-squashfs-sysupgrade.img.gz | gunzip openwrt-rockchip-armv8-friendlyarm_nanopi-r2s-squashfs-sysupgrade.img.gz
+cd /tmp/update
+	pv /tmp/update/openwrt-rockchip-armv8-friendlyarm_nanopi-r2s-squashfs-sysupgrade.img.gz | gunzip openwrt-rockchip-armv8-friendlyarm_nanopi-r2s-squashfs-sysupgrade.img.gz
 	echo -e '\e[92m准备解压镜像文件\e[0m'
 rm -rf openwrt-rockchip-armv8-friendlyarm_nanopi-r2s-squashfs-sysupgrade.img.gz
 lodev=$(losetup -f)
 mkdir /mnt/img
-losetup -o 100663296 $lodev /rom/openwrt-rockchip-armv8-friendlyarm_nanopi-r2s-squashfs-sysupgrade.img
+losetup -o 100663296 $lodev /tmp/update/openwrt-rockchip-armv8-friendlyarm_nanopi-r2s-squashfs-sysupgrade.img
 mount $lodev /mnt/img
 --echo -e '\e[92m解压已完成，准备编辑镜像文件，写入备份信息\e[0m'
 --cd /mnt/img
@@ -36,7 +36,7 @@ cd /tmp
 umount /mnt/img
 losetup -d $lodev
 echo -e '\e[92m准备重新打包\e[0m'
-zstdmt /rom/openwrt-rockchip-armv8-friendlyarm_nanopi-r2s-squashfs-sysupgrade.img -o /tmp/openwrt-rockchip-armv8-friendlyarm_nanopi-r2s-squashfs-sysupgrade.img.zst
+zstdmt /tmp/update/openwrt-rockchip-armv8-friendlyarm_nanopi-r2s-squashfs-sysupgrade.img -o /tmp/openwrt-rockchip-armv8-friendlyarm_nanopi-r2s-squashfs-sysupgrade.img.zst
 echo -e '\e[92m打包完毕，准备刷机\e[0m'
 if [ -f /tmp/openwrt-rockchip-armv8-friendlyarm_nanopi-r2s-squashfs-sysupgrade.img.zst ]; then
 	echo 1 > /proc/sys/kernel/sysrq
