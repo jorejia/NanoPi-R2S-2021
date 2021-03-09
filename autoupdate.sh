@@ -2,7 +2,7 @@
 opkg update
 opkg install zstd
 opkg install libzstd
-cd
+cd /rom
 rm -rf artifact openwrt-rockchip*.img.gz openwrt-rockchip*img*
 wget https://github.com/jorejia/NanoPi-R2S-2021/releases/download/$(date +%Y.%m.%d)-Lean/openwrt-rockchip-armv8-friendlyarm_nanopi-r2s-squashfs-sysupgrade.img.gz
 
