@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 # Add luci-app-koolproxyR
-push package
+pushd package
 git clone --depth=1 https://github.com/jefferymvp/luci-app-koolproxyR
 popd
 
