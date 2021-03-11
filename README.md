@@ -10,7 +10,6 @@
 ### 使用tips
 - OpenClash包含上网、DNS、去广告一站式服务，前提是得有一个优秀的配置文件，否则可以看下一条
 - SSRP的DNS上游交给端口5335，在AdGardhome中设置接管DNS也可以达到同样的效果
-- KoolproxyRP适合对广告屏蔽有深度需求的，可能会有副作用
 - DDNS.to简单上手的内网穿透，如果有公网ip那动态DNS更适合
 - UPnP和SQM QoS建议做主路由的时候开启
 - KMS服务器 `slmgr /skms 192.168.2.1` 你应该懂了
