@@ -18,7 +18,7 @@ env:
 
 jobs:
   Prebuild:
-    runs-on: self-hosted
+    runs-on: ubuntu-18.04
     if: github.repository == 'jorejia/NanoPi-R2S-2021'
     outputs:
       OPENWRTROOT: ${{ steps.update.outputs.OPENWRTROOT }}
@@ -83,7 +83,6 @@ jobs:
         find dl -size -1024c -exec rm -f {} \;
 
     - name: Make Tools
-      id: compile
       run: |
         cd $OPENWRTROOT
         echo -e "$(nproc) thread compile"
@@ -95,10 +94,10 @@ jobs:
 
   Build:
     needs: [Prebuild]
-    runs-on: self-hosted
+    runs-on: ubuntu-18.04
     if: github.repository == 'jorejia/NanoPi-R2S-2021'
     outputs:
-      OPENWRTROOT: ${{ steps.update.outputs.OPENWRTROOT }}
+      OPENWRTROOT: ${{ steps.compile.outputs.OPENWRTROOT }}
       PLATFORM: ${{ steps.compile.outputs.PLATFORM }}
       TARGET: ${{ steps.compile.outputs.TARGET }}
       SUBTARGET: ${{ steps.compile.outputs.SUBTARGET }}
@@ -110,6 +109,7 @@ jobs:
       uses: actions/checkout@main
 
     - name: Make Packages
+      id: compile
       run: |
         cd openwrt
         echo "OPENWRTROOT=$PWD" >> $GITHUB_ENV
@@ -185,7 +185,7 @@ jobs:
 
   Upload:
     needs: [Build]
-    runs-on: self-hosted
+    runs-on: ubuntu-18.04
     if: github.repository == 'jorejia/NanoPi-R2S-2021'
     steps:
       - name: Checkout
