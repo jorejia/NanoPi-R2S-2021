@@ -18,7 +18,7 @@ env:
 
 jobs:
   Prebuild:
-    runs-on: ubuntu-18.04
+    runs-on: self-hosted
     if: github.repository == 'jorejia/NanoPi-R2S-2021'
     outputs:
       OPENWRTROOT: ${{ steps.update.outputs.OPENWRTROOT }}
@@ -85,15 +85,13 @@ jobs:
     - name: Make Tools
       run: |
         cd $OPENWRTROOT
-        echo -e "$(nproc) thread compile"
-        let Make_Process=$(nproc)
-        make tools/compile -j${Make_Process} V=s
-        make toolchain/compile -j${Make_Process} V=s
-        make target/compile -j${Make_Process} V=s IGNORE_ERRORS=1
+        make tools/compile -j2 V=s
+        make toolchain/compile -j2 V=s
+        make target/compile -j2 V=s IGNORE_ERRORS=1
 
   Build:
     needs: [Prebuild]
-    runs-on: ubuntu-18.04
+    runs-on: self-hosted
     if: github.repository == 'jorejia/NanoPi-R2S-2021'
     outputs:
       OPENWRTROOT: ${{ steps.compile.outputs.OPENWRTROOT }}
@@ -110,14 +108,12 @@ jobs:
     - name: Make Packages
       id: compile
       run: |
-        cd /home/runner/work/NanoPi-R2S-2021/NanoPi-R2S-2021/openwrt
+        cd ~/actions-runner/work/R2S-R4S-X86-OpenWrt/R2S-R4S-X86-OpenWrt/openwrt
         echo "OPENWRTROOT=$PWD" >> $GITHUB_ENV
         echo "::set-output name=OPENWRTROOT::$(echo $PWD)"
         cd $OPENWRTROOT
-        echo -e "$(nproc) thread compile"
-        let Make_Process=$(nproc)
         make diffconfig
-        make package/compile -j${Make_Process} V=s IGNORE_ERRORS=1
+        make package/compile -j2 V=s IGNORE_ERRORS=1
         make package/index
         cd $OPENWRTROOT/bin/packages/*
         PLATFORM=$(basename `pwd`)
@@ -185,7 +181,7 @@ jobs:
 
   Upload:
     needs: [Build]
-    runs-on: ubuntu-18.04
+    runs-on: self-hosted
     if: github.repository == 'jorejia/NanoPi-R2S-2021'
     steps:
       - name: Checkout
