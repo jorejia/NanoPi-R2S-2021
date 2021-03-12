@@ -87,7 +87,7 @@ jobs:
         cd $OPENWRTROOT
         make tools/compile -j2 V=s
         make toolchain/compile -j2 V=s
-        make target/compile -j2 V=s IGNORE_ERRORS=1
+        make target/compile -j2 V=s
 
   Build:
     needs: [Prebuild]
@@ -113,7 +113,7 @@ jobs:
         echo "::set-output name=OPENWRTROOT::$(echo $PWD)"
         cd $OPENWRTROOT
         make diffconfig
-        make package/compile -j2 V=s IGNORE_ERRORS=1
+        make package/compile -j2 V=s
         make package/index
         cd $OPENWRTROOT/bin/packages/*
         PLATFORM=$(basename `pwd`)
@@ -163,8 +163,8 @@ jobs:
             mkdir -p files/bin
             cp ../scripts/ipv6-helper.sh files/bin/ipv6-helper
         fi
-        make package/install -j$(nproc) V=s
-        make target/install -j$(nproc) V=s
+        make package/install -j2 V=s
+        make target/install -j2 V=s
         make checksum
         #mkdir -p files/ddnsto
         #touch files/ddnsto/ddnsto.sh
