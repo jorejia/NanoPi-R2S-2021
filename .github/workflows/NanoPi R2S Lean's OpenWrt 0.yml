@@ -92,7 +92,7 @@ jobs:
       run: |
         cd $OPENWRTROOT
         echo -e "$(nproc) thread compile"
-        let Make_Process=$(nproc)-1
+        let Make_Process=$(nproc)-2
         make tools/compile -j${Make_Process} V=s
         make toolchain/compile -j${Make_Process} V=s
         make target/compile -j${Make_Process} V=s IGNORE_ERRORS=1
