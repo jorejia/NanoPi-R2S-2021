@@ -17,16 +17,11 @@ env:
   TZ: Asia/Shanghai
 
 jobs:
-  Build:
+  Prebuild:
     runs-on: self-hosted
     if: github.repository == 'jorejia/NanoPi-R2S-2021'
     outputs:
       OPENWRTROOT: ${{ steps.update.outputs.OPENWRTROOT }}
-      PLATFORM: ${{ steps.compile.outputs.PLATFORM }}
-      TARGET: ${{ steps.compile.outputs.TARGET }}
-      SUBTARGET: ${{ steps.compile.outputs.SUBTARGET }}
-      FIRMWARE: ${{ steps.compile.outputs.FIRMWARE }}
-      GENERATE_STATUS: ${{ steps.generate.outputs.GENERATE_STATUS }}
 
     steps:
     - name: Checkout
@@ -97,6 +92,31 @@ jobs:
         make toolchain/compile -j${Make_Process} V=s
         make target/compile -j${Make_Process} V=s IGNORE_ERRORS=1
         make diffconfig
+
+  Build:
+    needs: [Prebuild]
+    runs-on: self-hosted
+    if: github.repository == 'jorejia/NanoPi-R2S-2021'
+    outputs:
+      OPENWRTROOT: ${{ steps.update.outputs.OPENWRTROOT }}
+      PLATFORM: ${{ steps.compile.outputs.PLATFORM }}
+      TARGET: ${{ steps.compile.outputs.TARGET }}
+      SUBTARGET: ${{ steps.compile.outputs.SUBTARGET }}
+      FIRMWARE: ${{ steps.compile.outputs.FIRMWARE }}
+      GENERATE_STATUS: ${{ steps.generate.outputs.GENERATE_STATUS }}
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@main
+
+    - name: Make Packages
+      run: |
+        cd openwrt
+        echo "OPENWRTROOT=$PWD" >> $GITHUB_ENV
+        echo "::set-output name=OPENWRTROOT::$(echo $PWD)"
+        cd $OPENWRTROOT
+        echo -e "$(nproc) thread compile"
+        let Make_Process=$(nproc)-1
         make package/compile -j${Make_Process} V=s IGNORE_ERRORS=1
         make package/index
         cd $OPENWRTROOT/bin/packages/*
