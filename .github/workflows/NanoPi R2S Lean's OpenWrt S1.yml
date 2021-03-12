@@ -1,4 +1,4 @@
-name: NanoPi R2S Lean's OpenWrt 0
+name: NanoPi R2S Lean's OpenWrt S1
 
 on:
   repository_dispatch:
@@ -87,7 +87,7 @@ jobs:
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
 
-    - name: Compile Packages
+    - name: Make Tools
       id: compile
       run: |
         cd $OPENWRTROOT
