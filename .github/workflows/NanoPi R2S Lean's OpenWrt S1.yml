@@ -108,7 +108,6 @@ jobs:
         cd ~/actions-runner/work/NanoPi-R2S-2021/NanoPi-R2S-2021/openwrt
         echo "OPENWRTROOT=$PWD" >> $GITHUB_ENV
         echo "::set-output name=OPENWRTROOT::$(echo $PWD)"
-        cd $OPENWRTROOT
         make diffconfig
         make package/compile -j2 V=s
         make package/index
@@ -163,11 +162,6 @@ jobs:
         make package/install -j2 V=s
         make target/install -j2 V=s
         make checksum
-        #mkdir -p files/ddnsto
-        #touch files/ddnsto/ddnsto.sh
-        #cp ../scripts/ddnsto.sh files/ddnsto/ddnsto.sh
-        #chomd +x files/ddnsto/ddnsto.sh
-        #sh files/ddnsto/ddnsto.sh
         echo "::set-output name=GENERATE_STATUS::success"
     - name: Upload Bin Folder
       uses: actions/upload-artifact@main
