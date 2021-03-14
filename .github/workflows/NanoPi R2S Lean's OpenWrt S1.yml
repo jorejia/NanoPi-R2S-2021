@@ -85,9 +85,9 @@ jobs:
     - name: Make Tools
       run: |
         cd $OPENWRTROOT
-        make tools/compile -j2 V=s
-        make toolchain/compile -j2 V=s
-        make target/compile -j2 V=s
+        make tools/compile -j3 V=s
+        make toolchain/compile -j3 V=s
+        make target/compile -j3 V=s
 
   Build:
     needs: [Prebuild]
@@ -102,13 +102,11 @@ jobs:
       GENERATE_STATUS: ${{ steps.generate.outputs.GENERATE_STATUS }}
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@main
 
     - name: Make Packages
       id: compile
       run: |
-        cd ~/actions-runner/work/NanoPi-R2S-2021/NanoPi-R2S-2021/openwrt
+        cd openwrt
         echo "OPENWRTROOT=$PWD" >> $GITHUB_ENV
         echo "::set-output name=OPENWRTROOT::$(echo $PWD)"
         cd $OPENWRTROOT
