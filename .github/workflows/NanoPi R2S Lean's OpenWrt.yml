@@ -58,6 +58,7 @@ jobs:
         git config --global user.name 'GitHub Actions' && git config --global user.email 'noreply@github.com'
         df -h
 
+
     - name: Clone Source Code
       run: |
         df -hT $PWD
@@ -72,6 +73,7 @@ jobs:
         #rm -rf ./package/boot/uboot-rockchip
         #svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/boot/uboot-rockchip package/boot/uboot-rockchip
         #svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/boot/arm-trusted-firmware-rk3328 package/boot/arm-trusted-firmware-rk3328
+
 
     - name: Update Feeds
       id: update
@@ -188,23 +190,22 @@ jobs:
     - name: Deploy Packages-Server
       if: env.GENERATE_STATUS == 'success'
       run: |
-        mkdir -p server/web/snapshots/targets/$TARGET/$SUBTARGET
-        cp -r $OPENWRTROOT/bin/packages server/web/snapshots
-        cp -r $OPENWRTROOT/bin/targets/$TARGET/$SUBTARGET/packages server/web/snapshots/targets/$TARGET/$SUBTARGET
-        mv server packages-server
-        zip -qrm packages-server.zip packages-server
-        mv packages-server.zip $OPENWRTROOT/bin/targets/$TARGET/$SUBTARGET
-
+          mkdir -p server/web/snapshots/targets/$TARGET/$SUBTARGET
+          cp -r $OPENWRTROOT/bin/packages server/web/snapshots
+          cp -r $OPENWRTROOT/bin/targets/$TARGET/$SUBTARGET/packages server/web/snapshots/targets/$TARGET/$SUBTARGET
+          mv server packages-server
+          zip -qrm packages-server.zip packages-server
+          mv packages-server.zip $OPENWRTROOT/bin/targets/$TARGET/$SUBTARGET
     - name: Organize Files
       id: organize
       if: env.GENERATE_STATUS == 'success'
       run: |
-        cd ${FIRMWARE}
-        rm -rf packages
-        cd $OPENWRTROOT/bin/targets/$TARGET/
-        curl -fsSL git.io/file-transfer | sh
-        df -hT $PWD
-        echo "::set-output name=ORGANIZE_STATUS::success"
+          cd ${FIRMWARE}
+          rm -rf packages
+          cd $OPENWRTROOT/bin/targets/$TARGET/
+          curl -fsSL git.io/file-transfer | sh
+          df -hT $PWD
+          echo "::set-output name=ORGANIZE_STATUS::success"
 
     - name: Upload Firmware To WeTransfer
       id: wetransfer
@@ -229,9 +230,9 @@ jobs:
       uses: softprops/action-gh-release@v1
       if: steps.tag.outputs.status == 'success' && !cancelled()
       env:
-        GITHUB_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-      name: ${{ steps.tag.outputs.release_date }} NanoPi R2S
+        name: ${{ steps.tag.outputs.release_date }} NanoPi R2S
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/*
@@ -249,7 +250,7 @@ jobs:
         keep_latest: 7
         delete_tags: true
       env:
-        GITHUB_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Delete Artifacts
       uses: geekyeggo/delete-artifact@v1
