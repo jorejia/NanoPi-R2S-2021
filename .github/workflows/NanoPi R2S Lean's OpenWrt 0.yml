@@ -57,6 +57,7 @@ jobs:
         echo "OPENWRTROOT=$PWD" >> $GITHUB_ENV
         echo "::set-output name=OPENWRTROOT::$(echo $PWD)"
         ./scripts/feeds update -a
+
     - name: Install Feeds
       run: |
         cd $OPENWRTROOT
@@ -94,9 +95,9 @@ jobs:
         echo -e "$(nproc) thread compile"
         make tools/compile -j2 V=s
         make toolchain/compile -j2 V=s
-        make target/compile -j2 V=s IGNORE_ERRORS=1
+        make target/compile -j2 V=s
         make diffconfig
-        make package/compile -j2 V=s IGNORE_ERRORS=1
+        make package/compile -j2 V=s
         make package/index
         cd $OPENWRTROOT/bin/packages/*
         PLATFORM=$(basename `pwd`)
@@ -149,11 +150,6 @@ jobs:
         make package/install -j$(nproc) V=s
         make target/install -j$(nproc) V=s
         make checksum
-        #mkdir -p files/ddnsto
-        #touch files/ddnsto/ddnsto.sh
-        #cp ../scripts/ddnsto.sh files/ddnsto/ddnsto.sh
-        #chomd +x files/ddnsto/ddnsto.sh
-        #sh files/ddnsto/ddnsto.sh
         echo "::set-output name=GENERATE_STATUS::success"
     - name: Upload Bin Folder
       uses: actions/upload-artifact@main
@@ -161,6 +157,7 @@ jobs:
       with:
         name: bin-archive
         path: openwrt/bin
+
 
   Upload:
     needs: [Build]
@@ -251,7 +248,6 @@ jobs:
           delete_tags: true
         env:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
-
 
       - name: Delete Artifacts
         uses: geekyeggo/delete-artifact@v1
