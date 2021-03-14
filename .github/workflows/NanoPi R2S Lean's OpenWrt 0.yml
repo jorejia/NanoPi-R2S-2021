@@ -17,7 +17,7 @@ env:
   TZ: Asia/Shanghai
 
 jobs:
-  Build:
+  build:
     runs-on: self-hosted
     if: github.repository == 'jorejia/NanoPi-R2S-2021'
 
