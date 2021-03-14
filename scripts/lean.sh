@@ -42,6 +42,9 @@ git clone --depth=1 -b master https://github.com/vernesong/OpenClash
 # Add luci-app-onliner (need luci-app-nlbwmon)
 git clone --depth=1 https://github.com/rufengsuixing/luci-app-onliner
 
+#Add luci-app-r2sflasher
+git clone --depth=1 https://github.com/songchenwen/nanopi-r2s/luci-app-r2sflasher
+
 # Add luci-app-adguardhome
 svn co https://github.com/Lienol/openwrt/trunk/package/diy/luci-app-adguardhome
 svn co https://github.com/Lienol/openwrt/trunk/package/diy/adguardhome
