@@ -6,7 +6,9 @@
 - 完全根据R2S的特点定制插件，适合拿来就用不喜欢折腾的
 - 目标是满足上网、下载和文件共享的需求
 ### 默认
-- 用户名：root 密码：password 管理IP：192.168.2.1
+- WAN口和LAN口互换
+- 管理IP：192.168.2.1
+- 用户名：root 密码：password
 ### 使用tips
 - OpenClash包含上网、DNS、去广告一站式服务，前提是得有一个优秀的配置文件，否则可以看下一条
 - SSRP的DNS上游交给端口5335，在AdGardhome中设置接管DNS也可以达到同样的效果
@@ -27,5 +29,5 @@
 - 网络唤醒，可以远程开机，要到自己电脑bios里面设置开启
 ### 更新
 - 随缘更新，请下载最新的release
-- 不支持上传到luci更新固件，需卡刷
-- release里的 `XXX-squashfs-sysupgrade.img.gz` 支持恢复到出厂设置
+- 第一次使用请卡刷
+- release里的 `XXX-squashfs-sysupgrade.img.gz` 支持恢复到出厂设置，支持luci里面上传更新固件
