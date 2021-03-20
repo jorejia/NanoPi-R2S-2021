@@ -18,6 +18,10 @@ pushd package/community
 # Add Lienol's Packages
 git clone --depth=1 https://github.com/Lienol/openwrt-package
 
+#moschinadns
+svn co https://github.com/QiuSimons/openwrt-packages/branches/main/mos-chinadns
+svn co https://github.com/QiuSimons/openwrt-packages/branches/main/luci-app-moschinadns
+
 # Add luci-app-passwall
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall
 
