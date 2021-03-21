@@ -30,4 +30,4 @@
 ### 更新
 - 随缘更新，请下载最新的release
 - 第一次使用请卡刷
-- release里的 `XXX-squashfs-sysupgrade.img.gz` 支持恢复到出厂设置，支持luci里面上传更新固件
+- release里的 `XXX-squashfs-sysupgrade.img.gz` 支持恢复到出厂设置，解压后的.img文件支持luci里面上传更新固件
