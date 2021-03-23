@@ -68,8 +68,8 @@ jobs:
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE $OPENWRTROOT/.config
         chmod +x scripts/*.sh
         cd $OPENWRTROOT
-        cp -rf ../patch/files ./files
         ../$DIY_SH
+        cp -rf ../patch/files ./files
         ../scripts/preset-clash-core.sh armv8
         ../scripts/preset-terminal-tools.sh
 
