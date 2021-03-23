@@ -5785,6 +5785,10 @@ filters:
   url: https://gitee.com/cjx82630/cjxlist/raw/master/cjx-ublock.txt
   name: CJX's uBlock list
   id: 1600600709
+- enabled: true
+  url: https://gitee.com/cjx82630/cjxlist/raw/master/chinese.txt
+  name: CJX's chinese list
+  id: 1600600872
 whitelist_filters: []
 user_rules: []
 dhcp:
