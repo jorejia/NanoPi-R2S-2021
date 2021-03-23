@@ -48,7 +48,9 @@ git clone --depth=1 https://github.com/rufengsuixing/luci-app-onliner
 
 # Add luci-app-adguardhome
 svn co https://github.com/Lienol/openwrt/trunk/package/diy/luci-app-adguardhome
-svn co https://github.com/Lienol/openwrt/trunk/package/diy/adguardhome
+svn co https://github.com/openwrt/packages/trunk/net/adguardhome
+sed -i '/\t)/a\\t$(STAGING_DIR_HOST)/bin/upx --lzma --best $(GO_PKG_BUILD_BIN_DIR)/AdGuardHome' ./adguardhome/Makefile
+sed -i '/init/d' ./adguardhome/Makefile
 
 # Add luci-app-diskman
 git clone --depth=1 https://github.com/SuLingGG/luci-app-diskman
