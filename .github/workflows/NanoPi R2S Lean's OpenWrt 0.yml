@@ -69,7 +69,7 @@ jobs:
         chmod +x scripts/*.sh
         cd $OPENWRTROOT
         ../$DIY_SH
-        cp -rf ../patch/files ./files
+        ../target_only.sh
         ../scripts/preset-clash-core.sh armv8
         ../scripts/preset-terminal-tools.sh
 
