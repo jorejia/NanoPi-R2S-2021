@@ -56,7 +56,6 @@ jobs:
         cd openwrt
         echo "OPENWRTROOT=$PWD" >> $GITHUB_ENV
         echo "::set-output name=OPENWRTROOT::$(echo $PWD)"
-        sed -i 's/Os/O3/g' include/target.mk
         ./scripts/feeds update -a
 
     - name: Install Feeds
