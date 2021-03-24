@@ -2,13 +2,14 @@
 
 ### 介绍
 - Fork自[**DHDAXCW/NanoPi-R2S-2021**](https://github.com/DHDAXCW/NanoPi-R2S-2021)
-- 包含原版的基本特性，融合了[QiuSimons/R2S-R4S-X86-OpenWrt](https://github.com/QiuSimons/R2S-R4S-X86-OpenWrt)的一些内容
-- 完全根据R2S定制插件，适合拿来就用不喜欢折腾的
+- 包含原版的基本特性，融合了[**QiuSimons/R2S-R4S-X86-OpenWrt**](https://github.com/QiuSimons/R2S-R4S-X86-OpenWrt)的一些内容
+- O3优化，高配selfhost稳定编译
+- 根据R2S定制插件，追求简洁实用拒绝重复功能，适合拿来就用不喜欢折腾的
 - 目标是满足上网、下载和文件共享的需求
 ### 默认
 - WAN口和LAN口互换
 - 管理IP：192.168.2.1
-- 用户名：root 密码：password
+- 用户名：root    密码：password
 ### 使用tips
 - OpenClash包含上网、DNS、去广告一站式服务，前提是得有一个优秀的配置文件，否则可以看下一条
 - AdGardHome已预配置，支持无脑开启，自带dns加速，广告屏蔽list，后台默认用户名root密码password
@@ -32,4 +33,4 @@
 ### 更新
 - 随缘更新，请下载最新的release
 - 第一次使用请卡刷
-- release里的 `XXX-squashfs-sysupgrade.img.gz` 支持恢复到出厂设置，解压后的.img文件支持luci里面上传更新固件
+- release里的 `XXX-squashfs-sysupgrade.img.gz` 支持重置恢复初始状态，解压后的.img文件支持直接上传luci升级固件
