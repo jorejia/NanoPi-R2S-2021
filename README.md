@@ -11,7 +11,9 @@
 - 用户名：root 密码：password
 ### 使用tips
 - OpenClash包含上网、DNS、去广告一站式服务，前提是得有一个优秀的配置文件，否则可以看下一条
-- AdGardhome设置DNS端口为5335，再把SSRP的DNS上游交给端口5335，可以达到同样的效果
+- AdGardHome已预配置，支持无脑开启，自带dns加速，广告屏蔽list，后台默认用户名root密码password
+    - 单独使用：直接开启
+    - 配合SSRP：SSRP中选择dns解析方式为本机端口5335的dns服务，然后直接开启adgardhome完成套娃 
 - DDNS.to简单上手的内网穿透，如果有公网ip那动态DNS更适合
 - UPnP和SQM QoS建议做主路由的时候开启
 - KMS服务器 `slmgr /skms 192.168.2.1` 你应该懂了
