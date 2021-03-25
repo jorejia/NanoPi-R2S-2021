@@ -33,10 +33,6 @@ git clone --depth=1 https://github.com/KyleRicardo/MentoHUST-OpenWrt-ipk
 git clone --depth=1 https://github.com/ysc3839/luci-proto-minieap
 svn co https://github.com/immortalwrt/immortalwrt/trunk/package/ntlf9t/minieap
 
-#Add luci-app-netdata
-rm -rf ../lean/luci-app-netdata
-svn co https://github.com/281677160/openwrt-package/trunk/luci-app-netdata
-
 # Add ServerChan
 git clone --depth=1 https://github.com/tty228/luci-app-serverchan
 

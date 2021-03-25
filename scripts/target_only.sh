@@ -20,6 +20,13 @@ sed -i '/;;/i\ethtool -K eth0 rx off tx off && logger -t disable-offloading "dis
 #SWAP LAN WAN（满足千兆场景，可选
 sed -i 's,"eth1" "eth0","eth0" "eth1",g' target/linux/rockchip/armv8/base-files/etc/board.d/02_network
 sed -i "s,'eth1' 'eth0','eth0' 'eth1',g" target/linux/rockchip/armv8/base-files/etc/board.d/02_network
+# Change default shell to zsh
+sed -i 's/\/bin\/ash/\/usr\/bin\/zsh/g' package/base-files/files/etc/passwd
+# Modify default IP
+sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generate
+# Custom configs
+git am $GITHUB_WORKSPACE/patches/lean/*.patch
+echo -e " NanoPi-R2S OpenWrt built on "$(date +%Y.%m.%d)"\n -----------------------------------------------------" >> package/base-files/files/etc/banner
 
 <<'COMMENT'
 # 解决 DDR 内存问题
@@ -43,21 +50,6 @@ cp -f ../patch/new/main/998-rockchip-enable-i2c0-on-NanoPi-R2S.patch ./target/li
 # 配置 IRQ 并默认关闭 eth0 offloading rx/rx
 patch -p1 < ../patch/new/main/0002-IRQ-and-disable-eth0-tcp-udp-offloading-tx-rx.patch
 COMMENT
-
-# Change default shell to zsh
-sed -i 's/\/bin\/ash/\/usr\/bin\/zsh/g' package/base-files/files/etc/passwd
-
-# Modify default IP
-sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generate
-
-# 交换 lan/wan 口
-sed -i 's,"eth1" "eth0","eth0" "eth1",g' target/linux/rockchip/armv8/base-files/etc/board.d/02_network
-sed -i "s,'eth1' 'eth0','eth0' 'eth1',g" target/linux/rockchip/armv8/base-files/etc/board.d/02_network
-
-# Custom configs
-git am $GITHUB_WORKSPACE/patches/lean/*.patch
-echo -e " NanoPi-R2S OpenWrt built on "$(date +%Y.%m.%d)"\n -----------------------------------------------------" >> package/base-files/files/etc/banner
-
 
 <<'COMMENT'
 #Vermagic
