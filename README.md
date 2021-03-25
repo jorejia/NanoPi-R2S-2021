@@ -30,7 +30,7 @@
 - WatchCat可以设置一个自动重启时间，比如一周，设备运行更稳定
 - 上网时间控制，管理家里的孩子上网
 - 网络唤醒，可以远程开机，要到自己电脑bios里面设置允许
-### 更新
-- 随缘更新，请下载最新的release
+### 下载和更新
+- 随缘更新，请下载最新的release [**点我下载**](https://github.com/jorejia/NanoPi-R2S-2021/releases/latest)
 - 第一次使用请卡刷
 - release里的 `XXX-squashfs-sysupgrade.img.gz` 支持重置恢复初始状态，解压后的.img文件支持直接上传luci升级固件
