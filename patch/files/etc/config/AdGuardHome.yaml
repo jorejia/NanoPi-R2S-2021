@@ -98,7 +98,7 @@ filters:
   name: Peter Lowe's List
   id: 1595502661
 - enabled: true
-  url: https://raw.githubusercontent.com/hoshsadiq/adblock-nocoin-list/master/nocoin.txt
+  url: https://raw.sevencdn.com/hoshsadiq/adblock-nocoin-list/master/nocoin.txt
   name: NoCoin Filter List
   id: 1595502662
 - enabled: true
