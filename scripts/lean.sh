@@ -165,6 +165,5 @@ make && sudo make install
 popd
 
 #Add CUPInfo
-pushd package/lean/autocore/files/arm/sbin
-cp -f $GITHUB_WORKSPACE/scripts/cpuinfo cpuinfo
-popd
+#cp -f $GITHUB_WORKSPACE/scripts/cpuinfo cpuinfo
+#popd
