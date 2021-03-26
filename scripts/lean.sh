@@ -164,6 +164,10 @@ pushd po2lmo
 make && sudo make install
 popd
 
+# Lets Fuck
+mkdir package/base-files/files/usr/bin
+cp -f ../patch/new/script/fuck package/base-files/files/usr/bin/fuck
+
 #Add CUPInfo
 #cp -f $GITHUB_WORKSPACE/scripts/cpuinfo cpuinfo
 #popd
