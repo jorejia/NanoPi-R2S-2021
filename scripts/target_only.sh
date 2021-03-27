@@ -40,7 +40,6 @@ wget -P target/linux/rockchip/patches-5.4 https://github.com/immortalwrt/immorta
 wget -P target/linux/rockchip/patches-5.4 https://github.com/immortalwrt/immortalwrt/raw/master/target/linux/rockchip/patches-5.4/807-arm64-dts-nanopi-r2s-add-rk3328-dmc-relate-node.patch
 svn co https://github.com/immortalwrt/immortalwrt/branches/master/target/linux/rockchip/files target/linux/rockchip/files
 svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/boot/arm-trusted-firmware-rk3328 package/boot/arm-trusted-firmware-rk3328
-
 # RK3328 加入 idle 模式
 wget -P target/linux/rockchip/patches-5.4 https://github.com/immortalwrt/immortalwrt/raw/master/target/linux/rockchip/patches-5.4/007-arm64-dts-rockchip-Add-RK3328-idle-state.patch
 # 修改内核 DMA 到 2MiB
@@ -53,18 +52,19 @@ cp -f ../patch/new/main/998-rockchip-enable-i2c0-on-NanoPi-R2S.patch ./target/li
 patch -p1 < ../patch/new/main/0002-IRQ-and-disable-eth0-tcp-udp-offloading-tx-rx.patch
 COMMENT
 
+
 <<'COMMENT'
 #Vermagic
 latest_version="$(curl -s https://github.com/openwrt/openwrt/releases |grep -Eo "v[0-9\.]+\-*r*c*[0-9]*.tar.gz" |sed -n '/21/p' |sed -n 1p |sed 's/v//g' |sed 's/.tar.gz//g')"
 wget https://downloads.openwrt.org/releases/${latest_version}/targets/rockchip/armv8/packages/Packages.gz
 zgrep -m 1 "Depends: kernel (=.*)$" Packages.gz | sed -e 's/.*-\(.*\))/\1/' > .vermagic
 sed -i -e 's/^\(.\).*vermagic$/\1cp $(TOPDIR)\/.vermagic $(LINUX_DIR)\/.vermagic/' include/kernel-defaults.mk
-COMMENT
 
 # 对齐内核 Vermagic
 wget https://downloads.openwrt.org/releases/21.02-SNAPSHOT/targets/rockchip/armv8/packages/Packages.gz
 zgrep -m 1 "Depends: kernel (=.*)$" Packages.gz | sed -e 's/.*-\(.*\))/\1/' > .vermagic
 sed -i -e 's/^\(.\).*vermagic$/\1cp $(TOPDIR)\/.vermagic $(LINUX_DIR)\/.vermagic/' include/kernel-defaults.mk
+COMMENT
 
 # 内核加解密组件
 echo '
