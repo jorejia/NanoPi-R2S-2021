@@ -90,29 +90,37 @@ tls:
   private_key_path: ""
 filters:
 - enabled: true
-  url: https://gitee.com/halflife/list/raw/master/ad.txt
-  name: HalfLife
-  id: 1595502658
+  url: https://easylist-downloads.adblockplus.org/easylist.txt
+  name: Easylist
+  id: 1595502554
 - enabled: true
-  url: https://pgl.yoyo.org/adservers/serverlist.php?hostformat=adblockplus&showintro=1&mimetype=plaintext
-  name: Peter Lowe's List
+  url: https://easylist-downloads.adblockplus.org/easylistchina.txt
+  name: Easylist China
   id: 1595502661
-- enabled: true
-  url: https://raw.sevencdn.com/hoshsadiq/adblock-nocoin-list/master/nocoin.txt
-  name: NoCoin Filter List
-  id: 1595502662
 - enabled: true
   url: https://gitee.com/xinggsf/Adblock-Rule/raw/master/rule.txt
   name: 乘风 广告过滤规则
   id: 1600600707
 - enabled: true
-  url: https://gitee.com/cjx82630/cjxlist/raw/master/cjx-ublock.txt
-  name: CJX's uBlock list
+  url: https://gitee.com/xinggsf/Adblock-Rule/raw/master/mv.txt
+  name: 乘风 视频广告过滤规则
+  id: 1600600708
+- enabled: true
+  url: https://f000.backblazeb2.com/file/subrule/adguard/cjx-annoyance.txt
+  name: CJX’s Annoyance List
   id: 1600600709
 - enabled: true
+  url: https://gitee.com/cjx82630/cjxlist/raw/master/cjx-ublock.txt
+  name: CJX’s uBlock list
+  id: 1600600710
+- enabled: true
   url: https://gitee.com/cjx82630/cjxlist/raw/master/chinese.txt
-  name: CJX's chinese list
+  name: CJX’s chinese list
   id: 1600600872
+- enabled: true
+  url: https://cdn.jsdelivr.net/gh/privacy-protection-tools/anti-AD@master/anti-ad-easylist.txt
+  name: Anti-AD
+  id: 1600600971
 whitelist_filters: []
 user_rules: []
 dhcp:
