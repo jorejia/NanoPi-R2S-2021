@@ -92,35 +92,35 @@ filters:
 - enabled: true
   url: https://easylist-downloads.adblockplus.org/easylist.txt
   name: Easylist
-  id: 1595502554
+  id: 1600600101
 - enabled: true
   url: https://easylist-downloads.adblockplus.org/easylistchina.txt
   name: Easylist China
-  id: 1595502661
+  id: 1600600201
 - enabled: true
   url: https://gitee.com/xinggsf/Adblock-Rule/raw/master/rule.txt
   name: 乘风 广告过滤规则
-  id: 1600600707
+  id: 1600600301
 - enabled: true
   url: https://gitee.com/xinggsf/Adblock-Rule/raw/master/mv.txt
   name: 乘风 视频广告过滤规则
-  id: 1600600708
+  id: 1600600401
 - enabled: true
   url: https://f000.backblazeb2.com/file/subrule/adguard/cjx-annoyance.txt
   name: CJX’s Annoyance List
-  id: 1600600709
+  id: 1600600501
 - enabled: true
   url: https://gitee.com/cjx82630/cjxlist/raw/master/cjx-ublock.txt
   name: CJX’s uBlock list
-  id: 1600600710
+  id: 1600600601
 - enabled: true
   url: https://gitee.com/cjx82630/cjxlist/raw/master/chinese.txt
   name: CJX’s chinese list
-  id: 1600600872
+  id: 1600600701
 - enabled: true
   url: https://cdn.jsdelivr.net/gh/privacy-protection-tools/anti-AD@master/anti-ad-easylist.txt
   name: Anti-AD
-  id: 1600600971
+  id: 1600600801
 whitelist_filters: []
 user_rules: []
 dhcp:
