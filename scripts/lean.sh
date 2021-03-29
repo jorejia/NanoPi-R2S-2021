@@ -74,7 +74,7 @@ git clone --depth=1 https://github.com/immortalwrt/openwrt-tmate
 git clone --depth=1 https://github.com/tindy2013/openwrt-subconverter
 
 # Add gotop
-svn co https://github.com/immortalwrt/immortalwrt/trunk/package/ctcgfw/gotop
+svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-19.07/package/ctcgfw/gotop
 
 # Add smartdns
 svn co https://github.com/pymumu/smartdns/trunk/package/openwrt ../smartdns
@@ -114,13 +114,13 @@ popd
 
 # Add driver for rtl8821cu & rtl8812au-ac
 pushd package/lean
-svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/ctcgfw/rtl8812au-ac
-svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/ctcgfw/rtl8821cu
+svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-19.07/package/ctcgfw/rtl8812au-ac
+svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-19.07/package/ctcgfw/rtl8821cu
 popd
 
 # Add rtl88x2bu
 pushd package/lean
-svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/ctcgfw/rtl88x2bu
+svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-19.07/package/ctcgfw/rtl88x2bu
 popd
 
 # Mod zzz-default-settings
