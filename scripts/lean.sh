@@ -90,15 +90,6 @@ svn co https://github.com/openwrt/luci/trunk/applications/luci-app-wireguard
 git clone --depth=1 https://github.com/destan19/OpenAppFilter
 popd
 
-# Add CPUInfo
-#pushd feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status
-#sed -i '/Load Average/i\\t\t<tr><td width="33%"><%:CPU Temperature%></td><td><%=luci.sys.exec("cut -c1-2 /sys/class/thermal/thermal_zone0/temp")%><span>&#8451;</span></td></tr>' index.htm
-#sed -i '/Load Average/i\\t\t<tr><td width="33%"><%:欢迎订阅 Youbube 频道%></td><td><a href="https://www.youtube.com"><%:YOURENAME%></a></td></tr>' index.htm
-#sed -i 's/pcdata(boardinfo.system or "?")/"ARMv8"/' index.htm
-#sed -i 's/<%=luci.sys.exec("cat \/etc\/bench.log") or " "%>//' index.htm
-#sed -i 's|pcdata(boardinfo.system or "?")|luci.sys.exec("uname -m") or "?"|g' index.htm
-#sed -i 's/or "1"%>/or "1"%> ( <%=luci.sys.exec("expr `cat \/sys\/class\/thermal\/thermal_zone0\/temp` \/ 1000") or "?"%> \&#8451; ) /g' index.htm
-#popd
 # Add Adguardhome
 pushd feeds/packages/net
 svn co https://github.com/openwrt/packages/trunk/net/adguardhome
@@ -171,7 +162,3 @@ popd
 # Lets Fuck
 mkdir package/base-files/files/usr/bin
 cp -f ../patch/new/script/fuck package/base-files/files/usr/bin/fuck
-
-#Add CUPInfo
-#cp -f $GITHUB_WORKSPACE/scripts/cpuinfo cpuinfo
-#popd
