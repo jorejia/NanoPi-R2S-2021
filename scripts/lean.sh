@@ -90,6 +90,11 @@ svn co https://github.com/openwrt/luci/trunk/applications/luci-app-wireguard
 git clone --depth=1 https://github.com/destan19/OpenAppFilter
 popd
 
+# po2lmo
+pushd package/community/luci-app-openclash/tools/po2lmo
+make && sudo make install
+popd
+
 # Add Adguardhome
 pushd feeds/packages/net
 svn co https://github.com/openwrt/packages/trunk/net/adguardhome
