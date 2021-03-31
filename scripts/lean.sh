@@ -35,7 +35,7 @@ git clone --depth=1 https://github.com/KyleRicardo/MentoHUST-OpenWrt-ipk
 
 # Add minieap & luci-proto-minieap
 git clone --depth=1 https://github.com/ysc3839/luci-proto-minieap
-svn co https://github.com/immortalwrt/immortalwrt/trunk/package/ntlf9t/minieap
+svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-19.07/package/ntlf9t/minieap
 
 # Add ServerChan
 git clone --depth=1 https://github.com/tty228/luci-app-serverchan
@@ -78,7 +78,7 @@ svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-19.07/package
 
 # Add smartdns
 svn co https://github.com/pymumu/smartdns/trunk/package/openwrt ../smartdns
-svn co https://github.com/immortalwrt/immortalwrt/trunk/package/ntlf9t/luci-app-smartdns ../luci-app-smartdns
+svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-19.07/package/ntlf9t/luci-app-smartdns ../luci-app-smartdns
 
 # Add luci-udptools
 git clone --depth=1 https://github.com/zcy85611/openwrt-luci-kcp-udp
