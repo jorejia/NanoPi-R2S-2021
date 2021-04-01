@@ -97,6 +97,7 @@ jobs:
         make toolchain/compile -j3 V=s
         make target/compile -j3 V=s
         make diffconfig
+        make package/feeds/luci/luci-base/compile -j1 V=99
         make package/compile -j1 V=s
         make package/index
         cd $OPENWRTROOT/bin/packages/*
