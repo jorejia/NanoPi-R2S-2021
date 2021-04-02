@@ -97,11 +97,6 @@ sed -i '/\t)/a\\t$(STAGING_DIR_HOST)/bin/upx --lzma --best $(GO_PKG_BUILD_BIN_DI
 sed -i '/init/d' adguardhome/Makefile
 popd
 
-# ninja
-pushd feeds/packages/devel/ninja
-cp ninja.mk ninja-cmake.mk
-popd
-
 # Add luci-app-ddnsto
 pushd package/network/services
 git clone --depth=1 https://github.com/linkease/ddnsto-openwrt

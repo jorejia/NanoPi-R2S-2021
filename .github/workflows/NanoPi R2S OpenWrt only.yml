@@ -55,9 +55,6 @@ jobs:
         cd openwrt
         echo "OPENWRTROOT=$PWD" >> $GITHUB_ENV
         echo "::set-output name=OPENWRTROOT::$(echo $PWD)"
-        rm -f ./scripts/feeds
-        wget -P scripts https://raw.githubusercontent.com/immortalwrt/immortalwrt/openwrt-19.07/scripts/feeds
-        chmod +x scripts/feeds
         ./scripts/feeds update -a
 
     - name: Install Feeds
@@ -100,8 +97,7 @@ jobs:
         make toolchain/compile -j3 V=s
         make target/compile -j3 V=s
         make diffconfig
-        make package/feeds/luci/luci-base/compile -j1 V=99
-        make package/compile -j1 V=s
+        make package/compile -j2 V=s
         make package/index
         cd $OPENWRTROOT/bin/packages/*
         PLATFORM=$(basename `pwd`)
