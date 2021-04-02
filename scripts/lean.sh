@@ -99,7 +99,7 @@ popd
 
 # ninja
 pushd feeds/packages/devel/ninja
-mv ninja.mk ninja-cmake.mk
+cp ninja.mk ninja-cmake.mk
 popd
 
 # Add luci-app-ddnsto
