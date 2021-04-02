@@ -18,7 +18,7 @@ env:
 
 jobs:
   Build:
-    runs-on: ubuntu-18.04
+    runs-on: self-hosted
     if: github.repository == 'jorejia/NanoPi-R2S-2021'
     outputs:
       OPENWRTROOT: ${{ steps.update.outputs.OPENWRTROOT }}
