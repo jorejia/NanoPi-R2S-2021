@@ -55,6 +55,9 @@ jobs:
         cd openwrt
         echo "OPENWRTROOT=$PWD" >> $GITHUB_ENV
         echo "::set-output name=OPENWRTROOT::$(echo $PWD)"
+        rm -f ./scripts/feeds
+        svn co https://github.com/immortalwrt/immortalwrt/trunk/scripts/feeds scripts/feeds
+        chmod +x scripts/feeds
         ./scripts/feeds update -a
 
     - name: Install Feeds
