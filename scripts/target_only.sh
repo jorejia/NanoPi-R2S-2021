@@ -10,6 +10,8 @@ cp -f ../patch/new/package/100-Implements-AES-and-GCM-with-ARMv8-Crypto-Extensio
 #R2S_TL
 rm -rf ./target/linux/rockchip
 svn co https://github.com/immortalwrt/immortalwrt/branches/master/target/linux/rockchip target/linux/rockchip
+rm target/linux/rockchip/patches-5.4/992-rockchip-rk3399-overclock-to-2.2-1.8-GHz-for-NanoPi4.patch
+rm target/linux/rockchip/patches-5.4/009-rockchip-rk3399-Add-support-for-FriendlyARM-NanoPi-R.patch
 rm -rf ./package/boot/uboot-rockchip
 svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/boot/uboot-rockchip package/boot/uboot-rockchip
 svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/boot/arm-trusted-firmware-rk3328 package/boot/arm-trusted-firmware-rk3328
