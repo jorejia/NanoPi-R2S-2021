@@ -120,7 +120,7 @@ jobs:
         make target/compile -j2 V=s
         make diffconfig
         make package/feeds/luci/luci-base/compile -j1 V=99
-        make package/compile -j1 V=s
+        make package/compile -j2 V=s
         make package/index
         cd $OPENWRTROOT/bin/packages/*
         PLATFORM=$(basename `pwd`)
