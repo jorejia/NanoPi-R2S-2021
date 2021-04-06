@@ -54,7 +54,6 @@ jobs:
         sudo -E apt-get install -y $(curl -fsSL git.io/depends-ubuntu-1804) tree antlr3
         sudo -E apt-get clean -y
         sudo timedatectl set-timezone "$TZ"
-        git config --global user.name 'GitHub Actions' && git config --global user.email 'noreply@github.com'
         df -h
 
     - name: Clone Source Code
@@ -70,7 +69,11 @@ jobs:
         cd openwrt
         echo "OPENWRTROOT=$PWD" >> $GITHUB_ENV
         echo "::set-output name=OPENWRTROOT::$(echo $PWD)"
-        ./scripts/feeds update -a
+        mkdir customfeeds
+        git clone --depth=1 https://github.com/coolsnowwolf/packages customfeeds/packages
+        git clone --depth=1 https://github.com/coolsnowwolf/luci customfeeds/luci
+        chmod +x ../scripts/*.sh
+        ../scripts/hook-feeds.sh
 
     - name: Install Feeds
       run: |
