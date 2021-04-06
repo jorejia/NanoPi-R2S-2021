@@ -91,13 +91,6 @@ svn co https://github.com/openwrt/luci/trunk/applications/luci-app-wireguard
 git clone --depth=1 https://github.com/destan19/OpenAppFilter
 popd
 
-# Add Adguardhome
-pushd feeds/packages/net
-svn co https://github.com/openwrt/packages/trunk/net/adguardhome
-sed -i '/\t)/a\\t$(STAGING_DIR_HOST)/bin/upx --lzma --best $(GO_PKG_BUILD_BIN_DIR)/AdGuardHome' ./adguardhome/Makefile
-sed -i '/init/d' adguardhome/Makefile
-popd
-
 # Add luci-app-ddnsto
 pushd package/network/services
 git clone --depth=1 https://github.com/linkease/ddnsto-openwrt
