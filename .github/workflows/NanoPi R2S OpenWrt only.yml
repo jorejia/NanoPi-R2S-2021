@@ -51,7 +51,7 @@ jobs:
       run: |
         sudo -E rm -rf /etc/apt/sources.list.d
         sudo -E apt-get update -y
-        sudo -E apt-get install -y $(curl -fsSL git.io/depends-ubuntu-1804) tree
+        sudo -E apt-get install -y $(curl -fsSL git.io/depends-ubuntu-1804) tree antlr3
         sudo -E apt-get clean -y
         sudo timedatectl set-timezone "$TZ"
         git config --global user.name 'GitHub Actions' && git config --global user.email 'noreply@github.com'
