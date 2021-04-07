@@ -8,10 +8,6 @@ wget -P target/linux/generic/pending-5.4 https://github.com/immortalwrt/immortal
 cp -f ../patch/new/package/100-Implements-AES-and-GCM-with-ARMv8-Crypto-Extensions.patch ./package/libs/mbedtls/patches/100-Implements-AES-and-GCM-with-ARMv8-Crypto-Extensions.patch
 
 #R2S_TL
-rm -rf ./tools
-svn co https://github.com/immortalwrt/immortalwrt/branches/master/tools
-rm -rf ./toolchain
-svn co https://github.com/immortalwrt/immortalwrt/branches/master/toolchain
 rm -rf ./target/linux/rockchip
 svn co https://github.com/immortalwrt/immortalwrt/branches/master/target/linux/rockchip target/linux/rockchip
 rm -rf ./package/boot/uboot-rockchip
