@@ -31,7 +31,7 @@ sed -i '/;;/i\ethtool -K eth0 rx off tx off && logger -t disable-offloading "dis
 
 # 添加 R2S GPU 驱动
 rm -rf ./package/kernel/linux/modules/video.mk
-wget -P package/kernel/linux/modules/ https://github.com/immortalwrt/immortalwrt/raw/master/package/kernel/linux/modules/video.mk
+wget -P package/kernel/linux/modules/ https://raw.githubusercontent.com/immortalwrt/immortalwrt/master/package/kernel/linux/modules/video.mk
 
 #SWAP LAN WAN（满足千兆场景，可选
 sed -i 's,"eth1" "eth0","eth0" "eth1",g' target/linux/rockchip/armv8/base-files/etc/board.d/02_network
@@ -44,7 +44,7 @@ sed -i 's/\/bin\/ash/\/usr\/bin\/zsh/g' package/base-files/files/etc/passwd
 sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generate
 
 # Custom configs
-git am $GITHUB_WORKSPACE/patches/lean/*.patch
+# git am $GITHUB_WORKSPACE/patches/lean/*.patch
 echo -e " NanoPi-R2S OpenWrt built on "$(date +%Y.%m.%d)"\n -----------------------------------------------------" >> package/base-files/files/etc/banner
 
 # 内核加解密组件
