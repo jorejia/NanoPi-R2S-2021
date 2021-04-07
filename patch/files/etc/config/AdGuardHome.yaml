@@ -40,13 +40,11 @@ dns:
   - 223.6.6.6
   - 114.114.114.114
   - 114.114.115.115
-  - 1.2.4.8
-  - 210.2.4.8
   - 180.76.76.76
   - https://doh.opendns.com/dns-query
   upstream_dns_file: ""
   bootstrap_dns:
-  - 192.168.1.1
+  - 223.5.5.5
   all_servers: true
   fastest_addr: false
   allowed_clients: []
