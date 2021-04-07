@@ -3,7 +3,6 @@
 ### 介绍
 - Fork自[**DHDAXCW/NanoPi-R2S-2021**](https://github.com/DHDAXCW/NanoPi-R2S-2021)
 - 包含原版的基本特性，融合了[**QiuSimons/R2S-R4S-X86-OpenWrt**](https://github.com/QiuSimons/R2S-R4S-X86-OpenWrt)的一些内容
-- selfhost稳定环境下编译
 - 根据R2S定制插件，追求简洁实用拒绝重复功能，适合拿来就用不喜欢折腾的
 - 目标是满足上网、下载和文件共享的需求
 ### 默认
