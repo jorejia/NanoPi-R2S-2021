@@ -43,7 +43,7 @@ jobs:
       uses: softprops/action-gh-release@v1
       if: steps.tag.outputs.status == 'success' && !cancelled()
       env:
-        GITHUB_TOKEN: ${{ secrets.workflow_token }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_token }}
       with:
         name: ${{ steps.tag.outputs.release_date }}-NanoPi-R2S
         tag_name: ${{ steps.tag.outputs.release_tag }}
