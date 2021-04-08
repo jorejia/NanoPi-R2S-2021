@@ -172,7 +172,7 @@ jobs:
         echo "::set-output name=GENERATE_STATUS::success"
 
     - name: Deploy Packages-Server
-      if: env.GENERATE_STATUS == 'success'
+      if: steps.generate.outputs.GENERATE_STATUS == 'success'
       run: |
         mkdir -p server/web/snapshots/targets/$TARGET/$SUBTARGET
         cp -r $OPENWRTROOT/bin/packages server/web/snapshots
@@ -183,7 +183,7 @@ jobs:
 
     - name: Organize Files
       id: organize
-      if: env.GENERATE_STATUS == 'success'
+      if: steps.generate.outputs.GENERATE_STATUS == 'success'
       run: |
         cd ${FIRMWARE}
         rm -rf packages
