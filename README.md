@@ -2,7 +2,7 @@
 
 ### 介绍
 - Fork自[**DHDAXCW/NanoPi-R2S-2021**](https://github.com/DHDAXCW/NanoPi-R2S-2021)
-- 包含原版的基本特性，融合了[**QiuSimons/R2S-R4S-X86-OpenWrt**](https://github.com/QiuSimons/R2S-R4S-X86-OpenWrt)的一些内容
+- 包含原版的基本特性，并融合了[**QiuSimons/R2S-R4S-X86-OpenWrt**](https://github.com/QiuSimons/R2S-R4S-X86-OpenWrt)的一些内容
 - 根据R2S定制插件，追求简洁实用拒绝重复功能，适合拿来就用不喜欢折腾的
 - 目标是满足上网、下载和文件共享的需求
 ### 默认
@@ -11,7 +11,7 @@
 - 用户名：root    密码：password
 ### 使用tips
 - OpenClash包含上网、DNS、去广告一站式服务，前提是得有一个优秀的配置文件，否则可以看下一条
-- AdGardHome已预配置，支持无脑开启，自带dns加速，广告屏蔽list，后台默认用户名root密码password
+- AdGardHome已预配置预装内核，支持无脑开启，自带DoH与DoT的DNS并行加速，广告屏蔽list，后台默认用户名root密码password
     - 单独使用：直接开启
     - 配合SSRP：SSRP中选择dns解析方式为本机端口5335的dns服务，然后直接开启adgardhome完成套娃
 - DDNS.to简单上手的内网穿透，如果有公网ip那动态DNS更适合

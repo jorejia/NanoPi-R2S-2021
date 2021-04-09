@@ -115,10 +115,10 @@ sed -i "s/${orig_version}/${orig_version} ($(date +"%Y.%m.%d"))/g" zzz-default-s
 popd
 
 # Fix libssh
-pushd feeds/packages/libs
-rm -rf libssh
-svn co https://github.com/openwrt/packages/trunk/libs/libssh
-popd
+#pushd feeds/packages/libs
+#rm -rf libssh
+#svn co https://github.com/openwrt/packages/trunk/libs/libssh
+#popd
 
 # Use Lienol's https-dns-proxy package
 pushd feeds/packages/net

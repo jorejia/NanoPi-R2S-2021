@@ -11,11 +11,6 @@ git clone --depth=1 https://github.com/coolsnowwolf/packages customfeeds/package
 git clone --depth=1 https://github.com/coolsnowwolf/luci customfeeds/luci
 pushd customfeeds
 
-# Add Adguardhome
-#svn co https://github.com/openwrt/packages/trunk/net/adguardhome packages/net/adguardhome
-#sed -i '/\t)/a\\t$(STAGING_DIR_HOST)/bin/upx --lzma --best $(GO_PKG_BUILD_BIN_DIR)/AdGuardHome' ./packages/net/adguardhome/Makefile
-#sed -i '/init/d' packages/net/adguardhome/Makefile
-
 # Add luci-app-gowebdav
 svn co https://github.com/immortalwrt/luci/trunk/applications/luci-app-gowebdav luci/applications/luci-app-gowebdav
 svn co https://github.com/immortalwrt/packages/trunk/net/gowebdav packages/net/gowebdav
