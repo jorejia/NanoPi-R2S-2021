@@ -2,9 +2,10 @@
 
 ### 介绍
 - Fork自[**DHDAXCW/NanoPi-R2S-2021**](https://github.com/DHDAXCW/NanoPi-R2S-2021)
-- 包含原版的基本特性，并融合了[**QiuSimons/R2S-R4S-X86-OpenWrt**](https://github.com/QiuSimons/R2S-R4S-X86-OpenWrt)的一些内容
-- 根据R2S定制插件，追求简洁实用拒绝重复功能，适合拿来就用不喜欢折腾的
-- 目标是满足上网、下载和文件共享的需求
+- 源码来自[**SuLingGG/OpenWrt-Rpi**](https://github.com/SuLingGG/OpenWrt-Rpi)的rokerchip部分，包含原版固件特色，具体内容自行移步
+- 融合了[**QiuSimons/R2S-R4S-X86-OpenWrt**](https://github.com/QiuSimons/R2S-R4S-X86-OpenWrt)的一些内容
+- 固件自带插件追求稳定、精简、实用，目标是满足上网、下载和文件共享的需求，适合拿来就用不喜欢折腾的
+- 支持自行拓展插件，软件源和[SuLingGG/OpenWrt-Mini](https://github.com/SuLingGG/OpenWrt-Mini)项目对接，提供 7000 余个软件包以及 189 个 LuCI APP (截止 2021-02-22)，和本固件完美兼容可以无脑opkg安装
 ### 默认
 - WAN口和LAN口互换
 - 管理IP：192.168.2.1
@@ -29,6 +30,32 @@
 - WatchCat可以设置一个自动重启时间，比如一周，设备运行更稳定
 - 上网时间控制，管理家里的孩子上网
 - 网络唤醒，可以远程开机，要到自己电脑bios里面设置允许
+### 拓展软件包安装指南
+可以在luci界面-系统-软件包内搜索安装，也可以根据以下说明在终端命使用令行安装
+更新软件包索引:
+```
+opkg update
+```
+列出可安装的所有 LuCI APP :
+```
+opkg list | grep luci-app | grep -v Translation
+```
+安装软件包 (以 luci-app-ssr-plus 为例):
+```
+opkg install luci-app-ssr-plus
+```
+若发现此时新安装软件包界面为英文，则尝试查找该软件包的中文翻译包:
+```
+opkg list | grep luci-app-ssr-plus | grep zh-cn
+```
+此时可以得到该软件包的中文翻译包为 `luci-i18n-ssr-plus-zh-cn`，使用 `opkg install` 命令安装此翻译包即可:
+```
+opkg install luci-i18n-ssr-plus-zh-cn
+```
+可安装的 LuCI APP 列表:
+<https://github.com/SuLingGG/OpenWrt-Mini/blob/main/doc/LuCI-App-List.md>
+更多 opkg 使用方法请参考 OpenWrt Guide:
+<https://openwrt.org/docs/guide-user/additional-software/opkg>
 ### 下载和更新
 - 随缘更新，请下载最新的release [**点我下载**](https://github.com/jorejia/NanoPi-R2S-2021/releases/latest)
 - 第一次使用请卡刷
