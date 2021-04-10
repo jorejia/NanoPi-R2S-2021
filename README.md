@@ -55,6 +55,7 @@ opkg install luci-i18n-ssr-plus-zh-cn
 ```
 可安装的 LuCI APP 列表:
 <https://github.com/SuLingGG/OpenWrt-Mini/blob/main/doc/LuCI-App-List.md>
+
 更多 opkg 使用方法请参考 OpenWrt Guide:
 <https://openwrt.org/docs/guide-user/additional-software/opkg>
 ### 下载和更新
