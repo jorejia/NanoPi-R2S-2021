@@ -31,6 +31,9 @@
 - 上网时间控制，管理家里的孩子上网
 - 网络唤醒，可以远程开机，要到自己电脑bios里面设置允许
 ### 拓展软件包安装指南
+支持拓展安装的 LuCI APP 列表:
+<https://github.com/SuLingGG/OpenWrt-Mini/blob/main/doc/LuCI-App-List.md>
+
 可以在luci界面-系统-软件包内搜索安装，也可以根据以下说明在终端命使用令行安装
 
 更新软件包索引:
@@ -53,11 +56,6 @@ opkg list | grep luci-app-ssr-plus | grep zh-cn
 ```
 opkg install luci-i18n-ssr-plus-zh-cn
 ```
-可安装的 LuCI APP 列表:
-<https://github.com/SuLingGG/OpenWrt-Mini/blob/main/doc/LuCI-App-List.md>
-
-更多 opkg 使用方法请参考 OpenWrt Guide:
-<https://openwrt.org/docs/guide-user/additional-software/opkg>
 ### 下载和更新
 - 随缘更新，请下载最新的release [**点我下载**](https://github.com/jorejia/NanoPi-R2S-2021/releases/latest)
 - 第一次使用请卡刷
