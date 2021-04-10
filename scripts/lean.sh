@@ -6,9 +6,16 @@
 # Blog: https://p3terx.com
 #=================================================
 
-# Add luci-app-ssr-plus
 pushd package/lean
+# Add luci-app-ssr-plus
 git clone --depth=1 https://github.com/fw876/helloworld
+
+# Add pandownload-fake-server
+svn co https://github.com/immortalwrt/immortalwrt/trunk/package/lean/pandownload-fake-server
+
+# AutoCore
+rm -rf autocore
+svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/lean/autocore
 popd
 
 # Clone community packages to package/community
@@ -92,19 +99,12 @@ svn co https://github.com/openwrt/luci/trunk/applications/luci-app-wireguard
 git clone --depth=1 https://github.com/destan19/OpenAppFilter
 popd
 
-# Add luci-app-ddnsto
 pushd package/network/services
+# Add luci-app-ddnsto
 git clone --depth=1 https://github.com/linkease/ddnsto-openwrt
-popd
 
 # Add luci-app-linkease
-pushd package/network/services
 git clone --depth=1 https://github.com/linkease/linkease-openwrt
-popd
-
-# Add Pandownload
-pushd package/lean
-svn co https://github.com/immortalwrt/immortalwrt/trunk/package/lean/pandownload-fake-server
 popd
 
 # Mod zzz-default-settings
