@@ -2,7 +2,7 @@
 
 ### 介绍
 - Fork自[**DHDAXCW/NanoPi-R2S-2021**](https://github.com/DHDAXCW/NanoPi-R2S-2021)
-- 源码来自[**SuLingGG/OpenWrt-Rpi**](https://github.com/SuLingGG/OpenWrt-Rpi)的rokerchip部分，包含原版固件特色，具体内容自行移步
+- 源码来自[**SuLingGG/OpenWrt-Rpi**](https://github.com/SuLingGG/OpenWrt-Rpi)的rockchip部分，包含原版固件特色，具体内容自行移步
 - 融合了[**QiuSimons/R2S-R4S-X86-OpenWrt**](https://github.com/QiuSimons/R2S-R4S-X86-OpenWrt)的一些内容
 - 固件自带插件追求稳定、精简、实用，目标是满足上网、下载和文件共享的需求，适合拿来就用不喜欢折腾的
 - 支持自行拓展插件，软件源和[**SuLingGG/OpenWrt-Mini**](https://github.com/SuLingGG/OpenWrt-Mini)项目对接，提供 7000 余个软件包以及 189 个 LuCI APP (截止 2021-02-22)，和本固件完美兼容可以无脑opkg安装
