@@ -15,7 +15,7 @@ svn co https://github.com/immortalwrt/immortalwrt/trunk/package/lean/pandownload
 
 # AutoCore
 rm -rf autocore
-svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/lean/autocore
+svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-18.06-k5.4/package/lean/autocore
 popd
 
 # Clone community packages to package/community
@@ -27,7 +27,7 @@ git clone --depth=1 https://github.com/Lienol/openwrt-package
 
 # Add cpufreq
 rm -rf ../lean/luci-app-cpufreq
-svn co https://github.com/immortalwrt/immortalwrt/branches/master/package/lean/luci-app-cpufreq
+svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-18.06-k5.4/package/lean/luci-app-cpufreq
 
 # Add luci-app-passwall
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall
@@ -52,8 +52,8 @@ git clone --depth=1 -b master https://github.com/vernesong/OpenClash
 git clone --depth=1 https://github.com/rufengsuixing/luci-app-onliner
 
 # Add luci-app-adguardhome
-svn co https://github.com/281677160/openwrt-package/branches/19.07/luci-app-adguardhome
-svn co https://github.com/281677160/openwrt-package/branches/19.07/adguardhome
+#svn co https://github.com/281677160/openwrt-package/branches/19.07/luci-app-adguardhome
+#svn co https://github.com/281677160/openwrt-package/branches/19.07/adguardhome
 
 # Add luci-app-diskman
 git clone --depth=1 https://github.com/SuLingGG/luci-app-diskman
