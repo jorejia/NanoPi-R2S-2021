@@ -51,7 +51,7 @@ jobs:
       run: |
         sudo -E rm -rf /etc/apt/sources.list.d
         sudo -E apt-get update -y
-        sudo -E apt-get -y --no-install-recommends install jq build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib g++-multilib p7zip p7zip-full msmtp libssl-dev texinfo libreadline-dev libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint ccache curl wget vim nano python python3 python3-pip python-ply python3-ply haveged lrzsz device-tree-compiler scons antlr3 gperf intltool rsync swig tree
+        sudo -E apt-get -y --no-install-recommends install jq build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch zip unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib g++-multilib p7zip p7zip-full msmtp libssl-dev texinfo libreadline-dev libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint ccache curl wget vim nano python python3 python3-pip python-ply python3-ply haveged lrzsz device-tree-compiler scons antlr3 gperf intltool rsync swig tree
         sudo -E apt-get clean -y
         sudo timedatectl set-timezone "$TZ"
         df -h
@@ -165,7 +165,7 @@ jobs:
         echo "::set-output name=GENERATE_STATUS::success"
 
     - name: Deploy Packages-Server
-      if: env.GENERATE_STATUS == 'success'
+      if: steps.generate.outputs.GENERATE_STATUS == 'success'
       run: |
         mkdir -p server/web/snapshots/targets/$TARGET/$SUBTARGET
         cp -r $OPENWRTROOT/bin/packages server/web/snapshots
@@ -176,7 +176,7 @@ jobs:
 
     - name: Organize Files
       id: organize
-      if: env.GENERATE_STATUS == 'success'
+      if: steps.generate.outputs.GENERATE_STATUS == 'success'
       run: |
         cd ${FIRMWARE}
         rm -rf packages
@@ -207,7 +207,7 @@ jobs:
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
-        echo "::set-output name=release_tag::$(date +"%Y.%m.%d") NanoPi R2S"
+        echo "::set-output name=release_tag::$(date +"%Y.%m.%d")-Lean"
         echo "::set-output name=release_date::$(date +"%Y.%m.%d")"
         touch release.txt
         [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [Cowtransfer](${{ steps.cowtransfer.outputs.url }})" >> release.txt
@@ -220,7 +220,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.workflow_token }}
       with:
-        name: ${{ steps.tag.outputs.release_date }}-NanoPi-R2S
+        name: ${{ steps.tag.outputs.release_date }} NanoPi R2S
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/*
