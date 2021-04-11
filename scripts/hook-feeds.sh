@@ -17,7 +17,6 @@ git clone --depth=1 https://github.com/immortalwrt/luci -b openwrt-18.06 temp/lu
 
 # Coremark
 rm -rf packages/utils/coremark
-rm -rf ../package/lean/coremark
 cp -r temp/packages/utils/coremark packages/utils/coremark
 
 # Add luci-app-adguardhome

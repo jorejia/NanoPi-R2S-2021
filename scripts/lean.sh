@@ -12,10 +12,6 @@ git clone --depth=1 https://github.com/fw876/helloworld
 
 # Add pandownload-fake-server
 svn co https://github.com/immortalwrt/immortalwrt/trunk/package/lean/pandownload-fake-server
-
-# AutoCore
-rm -rf autocore
-svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-18.06-k5.4/package/lean/autocore
 popd
 
 # Clone community packages to package/community
@@ -24,6 +20,14 @@ pushd package/community
 
 # Add Lienol's Packages
 git clone --depth=1 https://github.com/Lienol/openwrt-package
+
+# AutoCore
+rm -rf ../lean/autocore
+svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-18.06-k5.4/package/lean/autocore
+
+# Coremark
+rm -rf ../lean/coremark
+svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-18.06-k5.4/package/lean/coremark
 
 # Add cpufreq
 rm -rf ../lean/luci-app-cpufreq
