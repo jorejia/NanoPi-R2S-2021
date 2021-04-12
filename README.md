@@ -59,4 +59,4 @@ opkg install luci-i18n-ssr-plus-zh-cn
 ### 下载和更新
 - 和上游软件源同步更新，固件自带插件更新后即最新版，拓展安装的插件更新后卸载原插件重新安装即为最新版（一般旧版插件也能继续用，但是如果出现bug或者兼容性问题，建议更换为最新版），请下载最新的release [**点我下载**](https://github.com/jorejia/NanoPi-R2S-2021/releases/latest)
 - 第一次使用请卡刷
-- release里的 `XXX-squashfs-sysupgrade.img.gz` 支持重置恢复初始状态，解压后的.img文件支持直接上传luci升级固件
+- release里的 `XXX-squashfs-sysupgrade.img.gz` 支持重置恢复初始状态，支持直接上传luci升级固件（无需解压 `.gz` 文件），如果升级失败，也可点击 `生成备份` 下载当前配置文件的 `.tar` 存档，卡刷安装后上传此 `.tar` 存档即可恢复之前固件的设置
