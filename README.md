@@ -62,6 +62,7 @@ opkg install luci-i18n-ssr-plus-zh-cn
 - release里的 `XXX-squashfs-sysupgrade.img.gz` 支持重置恢复初始状态，支持直接上传luci升级固件（无需解压 `.gz` 文件），如果升级失败，也可点击 `生成备份` 下载当前配置文件的 `.tar` 存档，卡刷安装后上传此 `.tar` 存档即可恢复之前固件的设置
 ### 鸣谢
 特别感谢以下项目：
+
 <https://github.com/openwrt/openwrt>
 <https://github.com/openwrt/openwrt>
 <https://github.com/project-openwrt>
