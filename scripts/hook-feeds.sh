@@ -5,17 +5,17 @@
 # Blog: https://mlapp.cn
 #=================================================
 
-# Svn checkout packages from immortalwrt's repository
 mkdir customfeeds
 git clone --depth=1 https://github.com/coolsnowwolf/packages customfeeds/packages
 git clone --depth=1 https://github.com/coolsnowwolf/luci customfeeds/luci
 
+# Svn checkout packages from immortalwrt's repository
 pushd customfeeds
 mkdir temp
 git clone --depth=1 https://github.com/immortalwrt/packages -b openwrt-18.06 temp/packages
 git clone --depth=1 https://github.com/immortalwrt/luci -b openwrt-18.06 temp/luci
 
-# Coremark
+# Add coremark
 rm -rf packages/utils/coremark
 cp -r temp/packages/utils/coremark packages/utils/coremark
 
