@@ -63,8 +63,9 @@ opkg install luci-i18n-ssr-plus-zh-cn
 ## 鸣谢
 特别感谢以下项目：
 - <https://github.com/openwrt/openwrt>
-- <https://github.com/openwrt/openwrt>
-- <https://github.com/project-openwrt>
+- <https://github.com/coolsnowwolf/lede>
+- <https://github.com/Lienol/openwrt>
+- <https://github.com/immortalwrt/immortalwrt>
 - <https://github.com/SuLingGG/OpenWrt-Rpi>
 - <https://github.com/SuLingGG/OpenWrt-Mini>
 - <https://github.com/DHDAXCW/NanoPi-R2S-2021>
