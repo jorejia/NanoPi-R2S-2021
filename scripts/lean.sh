@@ -25,10 +25,6 @@ git clone --depth=1 https://github.com/Lienol/openwrt-package
 rm -rf ../lean/autocore
 svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-18.06-k5.4/package/lean/autocore
 
-# Coremark
-rm -rf ../lean/coremark
-svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-18.06-k5.4/package/lean/coremark
-
 # Add cpufreq
 rm -rf ../lean/luci-app-cpufreq
 svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-18.06-k5.4/package/lean/luci-app-cpufreq
