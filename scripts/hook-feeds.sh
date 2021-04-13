@@ -52,10 +52,10 @@ cp -r temp/packages/admin/gotop packages/admin/gotop
 # Add minieap
 cp -r temp/packages/net/minieap packages/net/minieap
 rm -rf temp
-popd
 
 # 默认开启 Irqbalance
 sed -i "s/enabled '0'/enabled '1'/g" packages/utils/irqbalance/files/irqbalance.config
+popd
 
 # Set to local feeds
 pushd customfeeds/packages
