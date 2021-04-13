@@ -15,6 +15,10 @@ mkdir temp
 git clone --depth=1 https://github.com/immortalwrt/packages -b openwrt-18.06 temp/packages
 git clone --depth=1 https://github.com/immortalwrt/luci -b openwrt-18.06 temp/luci
 
+# Chage lang
+rm -rf packages/lang
+cp -r temp/packages/lang
+
 # Add coremark
 rm -rf packages/utils/coremark
 cp -r temp/packages/utils/coremark packages/utils/coremark
