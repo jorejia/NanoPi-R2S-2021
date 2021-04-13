@@ -21,6 +21,10 @@ pushd package/community
 # Add Lienol's Packages
 git clone --depth=1 https://github.com/Lienol/openwrt-package
 
+# Add luci-app-adguardhome
+svn co https://github.com/281677160/openwrt-package/branches/19.07/luci-app-adguardhome
+svn co https://github.com/281677160/openwrt-package/branches/19.07/adguardhome
+
 # AutoCore
 rm -rf ../lean/autocore
 svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-18.06-k5.4/package/lean/autocore
