@@ -22,6 +22,7 @@ cp -r temp/packages/utils/coremark packages/utils/coremark
 # Add luci-app-adguardhome
 cp -r temp/luci/applications/luci-app-adguardhome luci/applications/luci-app-adguardhome
 cp -r temp/packages/net/adguardhome packages/net/adguardhome
+cp -r temp/packages/lang/node-yarn packages/lang/node-yarn
 cp -r temp/packages/devel/packr packages/devel/packr
 
 # Add luci-app-gowebdav
