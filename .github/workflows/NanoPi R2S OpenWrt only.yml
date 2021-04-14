@@ -5,8 +5,8 @@ on:
   workflow_dispatch:
 
 env:
-  REPO_URL: https://github.com/project-openwrt/openwrt
-  REPO_BRANCH: openwrt-18.06-k5.4
+  REPO_URL: https://github.com/coolsnowwolf/lede
+  REPO_BRANCH: master
   CONFIG_FILE: configs/lean/lean.config
   DIY_SH: scripts/lean.sh
   IPV6MOD_IN_FIRMWARE: true
@@ -69,9 +69,8 @@ jobs:
         cd openwrt
         echo "OPENWRTROOT=$PWD" >> $GITHUB_ENV
         echo "::set-output name=OPENWRTROOT::$(echo $PWD)"
-        #chmod +x ../scripts/*.sh
-        #../scripts/hook-feeds.sh
-        ./scripts/feeds update -a
+        chmod +x ../scripts/*.sh
+        ../scripts/hook-feeds.sh
 
     - name: Install Feeds
       run: |
