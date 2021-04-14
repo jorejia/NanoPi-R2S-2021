@@ -6,7 +6,7 @@ on:
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
-  REPO_BRANCH: c41c174
+  REPO_BRANCH: master
   CONFIG_FILE: configs/lean/lean.config
   DIY_SH: scripts/lean.sh
   IPV6MOD_IN_FIRMWARE: true
@@ -60,13 +60,14 @@ jobs:
         git config --global user.email "git@github.com"
         git config --global user.name "GitHub"
         git clone $REPO_URL -b $REPO_BRANCH openwrt
+        cd openwrt
+        git checkout c41c174
+        echo "OPENWRTROOT=$PWD" >> $GITHUB_ENV
+        echo "::set-output name=OPENWRTROOT::$(echo $PWD)"
 
     - name: Update Feeds
       id: update
       run: |
-        cd openwrt
-        echo "OPENWRTROOT=$PWD" >> $GITHUB_ENV
-        echo "::set-output name=OPENWRTROOT::$(echo $PWD)"
         chmod +x ../scripts/*.sh
         ../scripts/hook-feeds.sh
 
