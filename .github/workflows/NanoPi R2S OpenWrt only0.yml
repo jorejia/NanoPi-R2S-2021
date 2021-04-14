@@ -68,6 +68,7 @@ jobs:
     - name: Update Feeds
       id: update
       run: |
+        cd $OPENWRTROOT
         chmod +x ../scripts/*.sh
         ../scripts/hook-feeds.sh
 
