@@ -5,8 +5,8 @@ on:
   workflow_dispatch:
 
 env:
-  REPO_URL: https://github.com/coolsnowwolf/lede
-  REPO_BRANCH: c41c174be849fb5ccae63997d742c63fc481dee4
+  REPO_URL: https://github.com/coolsnowwolf/lede^c41c174be849fb5ccae63997d742c63fc481dee4
+  REPO_BRANCH: master
   CONFIG_FILE: configs/lean/lean.config
   DIY_SH: scripts/lean.sh
   IPV6MOD_IN_FIRMWARE: true
