@@ -6,11 +6,14 @@
 #=================================================
 
 mkdir customfeeds
-git clone --depth=1 https://github.com/coolsnowwolf/packages customfeeds/packages
-git clone --depth=1 https://github.com/coolsnowwolf/luci customfeeds/luci
+#git clone --depth=1 https://github.com/coolsnowwolf/packages customfeeds/packages
+#git clone --depth=1 https://github.com/coolsnowwolf/luci customfeeds/luci
+git clone --depth=1 https://github.com/immortalwrt/packages -b openwrt-18.06 customfeeds/packages
+git clone --depth=1 https://github.com/immortalwrt/luci -b openwrt-18.06 customfeeds/luci
 
 # Svn checkout packages from immortalwrt's repository
 pushd customfeeds
+<<'COMMENT'
 mkdir temp
 git clone --depth=1 https://github.com/immortalwrt/packages -b openwrt-18.06 temp/packages
 git clone --depth=1 https://github.com/immortalwrt/luci -b openwrt-18.06 temp/luci
@@ -49,7 +52,7 @@ cp -r temp/packages/admin/gotop packages/admin/gotop
 # Add minieap
 cp -r temp/packages/net/minieap packages/net/minieap
 rm -rf temp
-
+COMMENT
 # 默认开启 Irqbalance
 sed -i "s/enabled '0'/enabled '1'/g" packages/utils/irqbalance/files/irqbalance.config
 popd
