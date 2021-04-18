@@ -115,11 +115,11 @@ jobs:
       run: |
         cd $OPENWRTROOT
         echo -e "$(nproc) thread compile"
-        make tools/compile -j3 V=s
-        make toolchain/compile -j3 V=s
+        make tools/install -j3 V=s
+        make toolchain/install -j3 V=s
         make target/compile -j3 V=s
         make diffconfig
-        make package/compile -j3 V=s IGNORE_ERRORS=1
+        make package/compile -j3 V=s
         make package/index
         cd $OPENWRTROOT/bin/packages/*
         PLATFORM=$(basename `pwd`)
@@ -148,6 +148,8 @@ jobs:
         cd $OPENWRTROOT
         mkdir -p files/etc/opkg
         cp ../data/opkg/distfeeds.conf files/etc/opkg/distfeeds.conf
+        mkdir -p files/www/snapshots
+        cp -r bin/targets files/www/snapshots
         mkdir -p files/etc/uci-defaults/
         cp ../scripts/init-settings.sh files/etc/uci-defaults/99-init-settings
         if "$IPV6MOD_IN_FIRMWARE" = 'true'
