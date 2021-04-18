@@ -1,0 +1,1 @@
+- 提供 non-shared packages 内置软件源支持，最大程度保证兼容性
