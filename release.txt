@@ -1,1 +1,2 @@
-- 提供 non-shared packages 内置软件源支持，最大程度保证兼容性
+- 增加驱动支持无限网卡 rtl8188eu rtl8192du rtl88x2bu
+- cpufreq 默认最高频率更改为不超频，需要超频可自行设置，并请用5V3A电源保证稳定性

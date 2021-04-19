@@ -5,7 +5,7 @@
 - 源码来自[**SuLingGG/OpenWrt-Rpi**](https://github.com/SuLingGG/OpenWrt-Rpi)的rockchip部分，包含原版固件特色，具体内容自行移步
 - 融合了[**QiuSimons/R2S-R4S-X86-OpenWrt**](https://github.com/QiuSimons/R2S-R4S-X86-OpenWrt)的一些内容
 - 固件自带插件追求稳定、精简、实用，目标是满足上网、下载和文件共享的需求，适合拿来就用不喜欢折腾的
-- 支持自行拓展插件，软件源和[**SuLingGG/OpenWrt-Mini**](https://github.com/SuLingGG/OpenWrt-Mini)项目对接，提供 7000 余个软件包以及 189 个 LuCI APP (截止 2021-02-22)，和本固件兼容可以无脑opkg安装
+- 支持自定义拓展插件，软件源和[**SuLingGG/OpenWrt-Mini**](https://github.com/SuLingGG/OpenWrt-Mini)项目对接，提供 7000 余个软件包以及 189 个 LuCI APP (截止 2021-02-22)，和本固件兼容可以无脑opkg安装
 ## 默认
 - WAN口和LAN口互换
 - 管理IP：192.168.2.1
@@ -30,11 +30,11 @@
 - WatchCat可以设置一个自动重启时间，比如一周，设备运行更稳定
 - 上网时间控制，管理家里的孩子上网
 - 网络唤醒，可以远程开机，要到自己电脑bios里面设置允许
-## 拓展软件包安装指南
+## 拓展插件安装指南
 支持拓展安装的 LuCI APP 列表:
 <https://github.com/SuLingGG/OpenWrt-Mini/blob/main/doc/LuCI-App-List.md>
 
-可以在luci界面-系统-软件包内搜索安装，也可以根据以下说明在终端命使用令行安装
+可以在 `系统-软件包` 先更新软件列表，然后直接搜索安装，也可以根据以下说明在终端命使用令行安装
 
 更新软件包索引:
 ```
@@ -57,9 +57,9 @@ opkg list | grep luci-app-ssr-plus | grep zh-cn
 opkg install luci-i18n-ssr-plus-zh-cn
 ```
 ## 下载和更新
-- 和上游软件源同步更新，固件自带插件更新后即最新版，拓展安装的插件更新后卸载原插件重新安装即为最新版（一般旧版插件也能继续用，但是如果出现bug或者兼容性问题，建议更换为最新版），请下载最新的release [**点我下载**](https://github.com/jorejia/NanoPi-R2S-2021/releases/latest)
+- 和上游源码同步更新，固件自带插件更新后即最新版，拓展安装的插件更新后卸载原插件重新安装即为最新版（一般旧版插件也能继续用，但是如果出现bug或者兼容性问题，建议重新安装为最新版），无论如何请下载最新的release [**点我下载**](https://github.com/jorejia/NanoPi-R2S-2021/releases/latest)
 - 第一次使用请卡刷
-- release里的 `XXX-squashfs-sysupgrade.img.gz` 支持重置恢复初始状态，支持直接上传luci升级固件（无需解压 `.gz` 文件），如果升级失败，也可点击 `生成备份` 下载当前配置文件的 `.tar` 存档，卡刷安装后上传此 `.tar` 存档即可恢复之前固件的设置
+- release里的 `XXX-squashfs-sysupgrade.img.gz` 支持重置恢复初始状态，支持直接上传luci升级固件（ `.img` 文件），如果升级失败，也可点击 `生成备份` 下载当前配置文件的 `.tar` 存档，卡刷安装后上传此 `.tar` 存档即可恢复之前固件的设置
 ## 鸣谢
 特别感谢以下项目：
 - <https://github.com/openwrt/openwrt>
