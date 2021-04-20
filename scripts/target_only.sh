@@ -36,7 +36,7 @@ sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generat
 
 # Custom configs
 # git am $GITHUB_WORKSPACE/patches/lean/*.patch
-echo -e " NanoPi-R2S OpenWrt built on "$(date +%Y.%m.%d)"\n -----------------------------------------------------" >> package/base-files/files/etc/banner
+echo -e " NanoPi-R2S-OpenWrt built by jorejia on "$(date +%Y.%m.%d)"\n -----------------------------------------------------" >> package/base-files/files/etc/banner
 
 # 内核加解密组件
 echo '
