@@ -67,7 +67,7 @@ CONFIG_CRYPTO_SM4_ARM64_CE=y
 
 # 预配置一些插件
 cp -rf ../patch/files ./files
-chmod +x ./files/usr/bin/curl
 chmod -R 755 ./
+chmod +x ./files/usr/bin/curl
 
 exit 0
